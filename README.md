@@ -23,3 +23,13 @@ Kampagnen-Daten: [`campaigns/`](campaigns/)
 ```
 pip install -r requirements.txt   # braucht außerdem ffmpeg mit libass und die Schrift "Inter"
 ```
+
+## Musik-Edits (Intro-Zitat → Drop → Schnitte im Beat)
+
+```
+python -m clipper.edit edits/2026-10-24-tjr-cinematic.json
+```
+- `look: "cinematic"` ist der Stil der großen TJR-Edit-Accounts: 4:3 mit schwarzen Balken, Film-Look, kleine weiße Untertitel, die Wort für Wort aufbauen.
+- `look: "hype"` ist Vollbild mit Hook-Box, gelben Wort-Untertiteln, Zoom-Punch, Shake und Flash auf dem Drop.
+- Drop und Beat werden aus dem Song gemessen. Der Drop fällt genau aufs Intro-Ende, jeder Schnitt sitzt auf einem Beat (`beats` pro Shot).
+- `cx` ist die Position der Person (0 = links, 1 = rechts). Mit `precrop` schneidest du vorher Overlays, Chat und Logos weg.

@@ -1,0 +1,111 @@
+{
+  "out": "output/2026-10-24/tjr/edit_mindset.mp4",
+  "music": "thunder",
+  "drop_hint": 20.1,
+  "intro": {
+    "src": "work/sources/tjr/clip_01M3DDYS5Z064P9DSFCYR5TVQ7.mp4",
+    "start": 5.8,
+    "end": 11.6,
+    "layout": "crop",
+    "crop_x": 0.56,
+    "hook": "The TJR mindset"
+  },
+  "shots": [
+    {
+      "src": "work/sources/tjr/clip_01M3DDYS5Z064P9DSFCYR5TVQ7.mp4",
+      "t": 20.6,
+      "beats": 2,
+      "crop_x": 0.56
+    },
+    {
+      "src": "work/sources/tjr_edit/clip_01HSYKMQQ4WDEBNDBYNVG680BG.mp4",
+      "t": 12.2,
+      "beats": 1,
+      "crop_x": 0.72
+    },
+    {
+      "src": "work/sources/tjr/clip_01M3Y9NJRMNANKR2AWAWXXJBEB.mp4",
+      "t": 0.6,
+      "beats": 1,
+      "crop_x": 0.5
+    },
+    {
+      "src": "work/sources/tjr_edit/clip_01HXS1AZWBV9FP1C6PWMDWT4P9.mp4",
+      "t": 11.0,
+      "beats": 1,
+      "crop_x": 0.5
+    },
+    {
+      "src": "work/sources/tjr/clip_01M3HBTYVSSVX79TRRHYTQ98QV.mp4",
+      "t": 31.0,
+      "beats": 1,
+      "crop_x": 0.45,
+      "precrop": "iw:ih*0.9:0:ih*0.1"
+    },
+    {
+      "src": "work/sources/tjr/clip_01M39S4PMMFKXM152XG41F67XC.mp4",
+      "t": 26.5,
+      "beats": 1,
+      "crop_x": 0.5
+    },
+    {
+      "src": "work/sources/tjr_edit/clip_01HXS28CH7SW9ESTHNYX4QHV06.mp4",
+      "t": 26.0,
+      "beats": 1,
+      "crop_x": 0.48
+    },
+    {
+      "src": "work/sources/tjr_edit/clip_01HXS28CH7SW9ESTHNYX4QHV06.mp4",
+      "t": 22.0,
+      "beats": 1,
+      "crop_x": 0.48
+    },
+    {
+      "src": "work/sources/tjr/clip_01M3Y9NJRMNANKR2AWAWXXJBEB.mp4",
+      "t": 4.6,
+      "beats": 1,
+      "crop_x": 0.55
+    },
+    {
+      "src": "work/sources/tjr_edit/clip_01M3F3TQYHYW9YASWAXATWCPBK.mp4",
+      "t": 6.0,
+      "beats": 1,
+      "crop_x": 0.5,
+      "precrop": "iw:ih*0.74:0:ih*0.07"
+    },
+    {
+      "src": "work/sources/tjr/clip_01M3DDYS5Z064P9DSFCYR5TVQ7.mp4",
+      "t": 24.0,
+      "beats": 2,
+      "crop_x": 0.56
+    },
+    {
+      "src": "work/sources/tjr/clip_01M39S4PMMFKXM152XG41F67XC.mp4",
+      "t": 45.0,
+      "beats": 1,
+      "crop_x": 0.5
+    },
+    {
+      "src": "work/sources/tjr_edit/clip_01HXS1AZWBV9FP1C6PWMDWT4P9.mp4",
+      "t": 20.0,
+      "beats": 1,
+      "crop_x": 0.5
+    },
+    {
+      "src": "work/sources/tjr/clip_01M3HBTYVSSVX79TRRHYTQ98QV.mp4",
+      "t": 32.4,
+      "beats": 2,
+      "crop_x": 0.5,
+      "precrop": "iw:ih*0.9:0:ih*0.1"
+    },
+    {
+      "src": "work/sources/tjr/clip_01M3DDYS5Z064P9DSFCYR5TVQ7.mp4",
+      "t": 25.6,
+      "beats": 3,
+      "crop_x": 0.56,
+      "punch": 0.06
+    }
+  ],
+  "fade_out": 0.8,
+  "caption": "The TJR mindset 🔥 @TJR #TJR #tjrtrades #tjrclips #motivation #mindset"
+}

@@ -1,0 +1,27 @@
+{
+  "out": "output/2026-10-24/tjr/edit_cinematic.mp4",
+  "look": "cinematic",
+  "music": "thunder",
+  "drop_hint": 20.1,
+  "music_under_voice_db": -10,
+  "intro": {"src": "work/sources/tjr/clip_01M3DDYS5Z064P9DSFCYR5TVQ7.mp4", "start": 5.8, "end": 17.6, "cx": 0.58},
+  "shots": [
+    {"src": "work/sources/tjr_edit/clip_01HSYKMQQ4WDEBNDBYNVG680BG.mp4", "t": 12.2, "beats": 2, "cx": 0.62, "precrop": "iw:ih*0.65:0:ih*0.35"},
+    {"src": "work/sources/tjr/clip_01M3Y9NJRMNANKR2AWAWXXJBEB.mp4", "t": 0.6, "beats": 1, "cx": 0.5},
+    {"src": "work/sources/tjr/clip_01M3DDYS5Z064P9DSFCYR5TVQ7.mp4", "t": 20.6, "beats": 1, "cx": 0.58},
+    {"src": "work/sources/tjr/clip_01M3HBTYVSSVX79TRRHYTQ98QV.mp4", "t": 31.0, "beats": 2, "cx": 0.45, "precrop": "iw:ih*0.9:0:ih*0.1"},
+    {"src": "work/sources/tjr_edit/clip_01HXS1AZWBV9FP1C6PWMDWT4P9.mp4", "t": 11.0, "beats": 1, "precrop": "864:648:528:432"},
+    {"src": "work/sources/tjr/clip_01M39S4PMMFKXM152XG41F67XC.mp4", "t": 26.5, "beats": 1, "cx": 0.5},
+    {"src": "work/sources/tjr/clip_01M3Y9NJRMNANKR2AWAWXXJBEB.mp4", "t": 4.6, "beats": 2, "cx": 0.55},
+    {"src": "work/sources/tjr_edit/clip_01M3F3TQYHYW9YASWAXATWCPBK.mp4", "t": 6.0, "beats": 1, "cx": 0.5, "precrop": "iw:ih*0.74:0:ih*0.07"},
+    {"src": "work/sources/tjr_edit/clip_01HXS28CH7SW9ESTHNYX4QHV06.mp4", "t": 22.0, "beats": 1, "precrop": "864:648:500:400"},
+    {"src": "work/sources/tjr/clip_01M3DDYS5Z064P9DSFCYR5TVQ7.mp4", "t": 24.0, "beats": 2, "cx": 0.58},
+    {"src": "work/sources/tjr_edit/clip_01HSYKMQQ4WDEBNDBYNVG680BG.mp4", "t": 14.0, "beats": 1, "cx": 0.6, "precrop": "iw:ih*0.65:0:ih*0.35"},
+    {"src": "work/sources/tjr/clip_01M3HBTYVSSVX79TRRHYTQ98QV.mp4", "t": 32.4, "beats": 1, "cx": 0.5, "precrop": "iw:ih*0.9:0:ih*0.1"},
+    {"src": "work/sources/tjr/clip_01M39S4PMMFKXM152XG41F67XC.mp4", "t": 45.0, "beats": 1, "cx": 0.5},
+    {"src": "work/sources/tjr_edit/clip_01HXS1AZWBV9FP1C6PWMDWT4P9.mp4", "t": 20.0, "beats": 1, "precrop": "864:648:528:432"},
+    {"src": "work/sources/tjr/clip_01M3DDYS5Z064P9DSFCYR5TVQ7.mp4", "t": 25.6, "beats": 4, "cx": 0.58, "punch": 0.0}
+  ],
+  "fade_out": 1.0,
+  "caption": "It doesn't matter how long it takes 💯 @TJR #TJR #tjrtrades #tjrclips #motivation #mindset"
+}
