@@ -1,5 +1,7 @@
 # Whopclips
 
+**Antworte dem Nutzer immer auf Deutsch.** Nur Inhalte für die Clips selbst (Hooks, Captions, Hashtags) sind auf Englisch, weil die Kampagnen ein englischsprachiges Publikum verlangen.
+
 Whopclips produziert Clips für Whop-/Reach-Clipping-Kampagnen, aktuell **TJR** und **Juliano Massarelli**. Pro Kampagne und Tag entstehen 3 verschiedene Clips: TikTok, Instagram Reels, YouTube Shorts.
 
 - Regeln, Analyse und Stil stehen in `docs/strategie.md`, die Kampagnen-Daten in `campaigns/`. **Halte dich strikt an die Regeln:**
