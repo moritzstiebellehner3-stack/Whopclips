@@ -1,0 +1,56 @@
+[
+  {
+    "campaign": "tjr", "platform": "tiktok",
+    "src": "work/sources/tjr/clip_01M39S4PMMFKXM152XG41F67XC.mp4",
+    "source_url": "https://kick.com/tjr/clips/clip_01M39S4PMMFKXM152XG41F67XC",
+    "start": 6.4, "end": 59.2, "layout": "crop",
+    "hook": "TJR to the guy who trades high at 9AM",
+    "caption": "TJR to the guy who trades high at 9AM 😭 @TJR #TJR #tjrtrades #tjrclips #daytrading",
+    "sound": "TikTok sound 'ski slopes' at ~8% volume"
+  },
+  {
+    "campaign": "tjr", "platform": "instagram",
+    "src": "work/sources/tjr/clip_01M3DDYS5Z064P9DSFCYR5TVQ7.mp4",
+    "source_url": "https://kick.com/tjr/clips/clip_01M3DDYS5Z064P9DSFCYR5TVQ7",
+    "start": 0, "end": 27.3, "layout": "fit",
+    "hook": "This is why most people never make it",
+    "caption": "This is why most people never make it 💯 @tjr #TJR #tjrtrades #tjrclips #motivation #daytrading",
+    "sound": "Instagram sound 'LEGACY (main)' at ~8% volume"
+  },
+  {
+    "campaign": "tjr", "platform": "youtube",
+    "src": "work/sources/tjr/clip_01M3HBTYVSSVX79TRRHYTQ98QV.mp4",
+    "source_url": "https://kick.com/tjr/clips/clip_01M3HBTYVSSVX79TRRHYTQ98QV",
+    "start": 25.3, "end": 44.6, "layout": "fit", "zoom": 1.35, "precrop": "iw:ih*0.86:0:ih*0.14",
+    "hook": "TJR skipping leg day like the rest of us",
+    "caption": "TJR skipping leg day like the rest of us 😂 #TJR #tjrtrades #tjrclips #shorts",
+    "sound": "a light beat from the YouTube Audio Library, very quiet"
+  },
+  {
+    "campaign": "juliano", "platform": "tiktok",
+    "src": "work/sources/juliano/7696641697165348126.mp4",
+    "source_url": "https://www.tiktok.com/@thewolfofinsurance/video/7696641697165348126",
+    "start": 0, "end": 58.9, "layout": "crop",
+    "hook": "He called a lead who owned Bitcoin before it had a name",
+    "caption": "He called a lead who owned Bitcoin before it had a name 😭 #JulianoMassarelli #sales #lifeinsurance #bitcoin #salescall",
+    "sound": "only original audio (the conversation carries it)"
+  },
+  {
+    "campaign": "juliano", "platform": "instagram",
+    "src": "work/sources/juliano/7699502547555454238.mp4",
+    "source_url": "https://www.tiktok.com/@thewolfofinsurance/video/7699502547555454238",
+    "start": 0, "end": 48.3, "layout": "crop",
+    "hook": "Morning routine of a 19 y/o who runs a life insurance agency",
+    "caption": "Morning routine of a 19 y/o who runs a life insurance agency 🏆 #JulianoMassarelli #dayinthelife #entrepreneur #sales #lifeinsurance",
+    "sound": "an upbeat trending sound at ~10% volume"
+  },
+  {
+    "campaign": "juliano", "platform": "youtube",
+    "src": "work/sources/juliano/7699667531488972062.mp4",
+    "source_url": "https://www.tiktok.com/@thewolfofinsurance/video/7699667531488972062",
+    "start": 39.6, "end": 58.4, "layout": "crop",
+    "hook": "If you can see it, you can do it",
+    "caption": "If you can see it, you can do it 🏆 #JulianoMassarelli #motivation #mindset #shorts",
+    "sound": "an emotional piano/phonk track from the YouTube Audio Library, quiet"
+  }
+]

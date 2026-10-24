@@ -1,6 +1,20 @@
 # Whopclips
 
-Whopclips ist eine Plattform für Clipping-Kampagnen: Creator stellen Kampagnen ein, Clipper reichen Kurzvideos (TikTok, Reels, Shorts) ein und werden pro View bezahlt. Der Tech-Stack steht noch nicht fest.
+Whopclips produziert Clips für Whop-/Reach-Clipping-Kampagnen, aktuell **TJR** und **Juliano Massarelli**. Pro Kampagne und Tag entstehen 3 verschiedene Clips: TikTok, Instagram Reels, YouTube Shorts.
+
+- Regeln, Analyse und Stil stehen in `docs/strategie.md`, die Kampagnen-Daten in `campaigns/`. **Halte dich strikt an die Regeln:**
+  - keine Logos
+  - keine KI-Inhalte
+  - die Person nie negativ darstellen
+  - Pflicht-Hashtag
+  - nur offizielle Quellen
+- Ablauf: Material holen → `python -m clipper.transcribe` → Momente aussuchen → `plans/<datum>.json` → `python -m clipper.batch plans/<datum>.json`. Details stehen in `README.md`.
+- Cloud-Hinweise:
+  - YouTube blockt Downloads aus der Cloud.
+  - TJR-Material kommt deshalb von Kick (`kick.com/api/v2/channels/tjr/clips?sort=view&time=week`).
+  - Juliano-Material kommt von TikTok, mit `yt-dlp --impersonate chrome`.
+- Prüfe jeden fertigen Clip anhand von Standbildern, ob Logos oder Overlays zu sehen sind.
+- In Cloud-Sessions ist kein Zugriff auf Obsidian möglich. Schreib dann den Tageslog nach `obsidian-log/YYYY-MM-DD.md`. Eine lokale Session kopiert ihn später in den Vault.
 
 ## Obsidian-Vault (Gedächtnis des Nutzers)
 

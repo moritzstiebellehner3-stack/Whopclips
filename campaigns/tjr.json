@@ -1,0 +1,26 @@
+{
+  "name": "TJR $23,100 Clipping Campaign",
+  "url": "https://reachclipping.com/TJR",
+  "pay": "$0.75 / 1K views, $3.75 min, $750 max per clip (TikTok, Instagram, YouTube)",
+  "min_views": 5000,
+  "required_hashtag": "#TJR",
+  "sources": [
+    "https://www.youtube.com/@TJRTrades",
+    "https://www.youtube.com/@TRichesTrades",
+    "https://kick.com/tjr",
+    "https://www.instagram.com/tjr/"
+  ],
+  "rules": [
+    "Video must feature TJR",
+    "Only TikTok, Instagram Reels, YouTube Shorts",
+    "Audience at least 50% USA/CA/AU/UK/NZ: English captions and on-screen text only",
+    "Account must fit the niche (trading/money/motivation)",
+    "Never show TJR in a negative light",
+    "No botting, no reposts, no collab posts",
+    "No logos of any kind (crop out sponsor overlays like 'USE CODE TJR', Kick/Stake/Polymarket logos)",
+    "No AI-generated content",
+    "Submit the link in Content Rewards within 30 minutes of posting"
+  ],
+  "what_works": "Funny moments, memorable quotes, reactions, money/lifestyle flex. Top clip accounts: @.tjr.him (raw talking-head, caption only '#TJR', trending sound underneath), @tjr.clips02 (hook text on screen + caption '<Hook> @TJR #tjr #tjrtrades #tjrclips')",
+  "caption_template": "{hook} @TJR #TJR #tjrtrades #tjrclips #daytrading"
+}
