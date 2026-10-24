@@ -2,7 +2,7 @@
 
 - Hook-Titel oben (schwarze Schrift auf weißem Kasten, wie bei den erfolgreichen Clip-Accounts)
 - Wort-für-Wort-Untertitel, das gesprochene Wort ist gelb hervorgehoben
-- Layout "fit": Video mittig, unscharfer Hintergrund. Layout "crop": Vollbild-Ausschnitt (gut für Gesichter)
+- Layout "crop": Vollbild-Ausschnitt, "track": Vollbild, folgt dem Gesicht, "fit": Video mittig mit unscharfem Hintergrund
 - Lautstärke auf -14 LUFS normalisiert, optional Hintergrundmusik 14 dB unter der Stimme (nur lizenzfreie Tracks!)
 
     python -m clipper.render --src work/sources/ID.mp4 --words work/sources/ID.words.json \
@@ -97,26 +97,60 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     return head + "\n".join(ev) + "\n"
 
 
+def face_track(a, pre: str, fps: int = 5, smooth: int = 7):
+    """Sucht 5x pro Sekunde das größte Gesicht und liefert geglättete Crop-Positionen (0 = links, 1 = rechts)."""
+    import cv2
+    import numpy as np
+
+    vf = f"{pre}fps={fps},scale=480:-2,format=gray"
+    base = ["ffmpeg", "-v", "error", "-ss", str(a.start), "-t", str(a.end - a.start), "-i", a.src, "-vf", vf]
+    probe = subprocess.run(base + ["-frames:v", "1", "-f", "rawvideo", "-"], check=True, capture_output=True).stdout
+    h = len(probe) // 480
+    raw = subprocess.run(base + ["-f", "rawvideo", "-"], check=True, capture_output=True).stdout
+    frames = np.frombuffer(raw, np.uint8).reshape(-1, h, 480)
+
+    detectors = [cv2.CascadeClassifier(cv2.data.haarcascades + n)
+                 for n in ("haarcascade_frontalface_default.xml", "haarcascade_profileface.xml")]
+    centers, last = [], 0.5
+    for f in frames:
+        faces = [r for d in detectors for r in d.detectMultiScale(f, 1.1, 5, minSize=(40, 40))]
+        if faces:
+            x, _, w, _ = max(faces, key=lambda r: r[2] * r[3])
+            last = (x + w / 2) / 480
+        centers.append(last)
+
+    k = (h * 9 / 16) / 480  # Crop-Breite als Anteil der Bildbreite
+    kernel = np.ones(smooth) / smooth
+    padded = np.pad(np.array(centers), smooth // 2, mode="edge")
+    smoothed = np.convolve(padded, kernel, mode="valid")
+    return [(i / fps, float(np.clip((c - k / 2) / (1 - k), 0, 1))) for i, c in enumerate(smoothed)]
+
+
 def render(a) -> None:
     words = json.loads(Path(a.words).read_text()) if a.words else []
     dur = a.end - a.start
 
     pre = f"crop={a.precrop}," if a.precrop else ""
-    if a.layout == "fit":
-        fg_w = int(W * a.zoom) // 2 * 2
-        fg_h = int(fg_w * 9 / 16) // 2 * 2
-        hook_y, cap_y = (H - fg_h) // 2 - 150, (H + fg_h) // 2 + 170
-        video = (
-            f"[0:v]{pre}split[a][b];"
-            f"[a]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},gblur=sigma=40,eq=brightness=-0.18[bg];"
-            f"[b]scale={fg_w}:-2,crop=min(iw\\,{W}):ih[fg];"
-            f"[bg][fg]overlay=(W-w)/2:(H-h)/2"
-        )
-    else:
-        hook_y, cap_y = 300, 1380
-        video = f"[0:v]{pre}crop=ih*9/16:ih:(iw-ow)*{a.crop_x}:0,scale={W}:{H}"
-
     with tempfile.TemporaryDirectory() as tmp:
+        if a.layout == "fit":
+            fg_w = int(W * a.zoom) // 2 * 2
+            fg_h = int(fg_w * 9 / 16) // 2 * 2
+            hook_y, cap_y = (H - fg_h) // 2 - 150, (H + fg_h) // 2 + 170
+            video = (
+                f"[0:v]{pre}split[a][b];"
+                f"[a]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},gblur=sigma=40,eq=brightness=-0.18[bg];"
+                f"[b]scale={fg_w}:-2,crop=min(iw\\,{W}):ih[fg];"
+                f"[bg][fg]overlay=(W-w)/2:(H-h)/2"
+            )
+        elif a.layout == "track":
+            hook_y, cap_y = 300, 1380
+            cmds = Path(tmp) / "track.cmd"
+            cmds.write_text("".join(f"{t:.2f} crop@t x (iw-ow)*{f:.4f};\n" for t, f in face_track(a, pre)))
+            video = f"[0:v]{pre}sendcmd=f={cmds},crop@t=ih*9/16:ih:(iw-ow)*0.5:0,scale={W}:{H}"
+        else:
+            hook_y, cap_y = 300, 1380
+            video = f"[0:v]{pre}crop=ih*9/16:ih:(iw-ow)*{a.crop_x}:0,scale={W}:{H}"
+
         ass = Path(tmp) / "subs.ass"
         ass.write_text(build_ass(words, a.start, a.end, a.hook, hook_y, cap_y))
         video += f",ass={ass},fps=30,format=yuv420p[v]"
@@ -150,7 +184,8 @@ if __name__ == "__main__":
     p.add_argument("--end", type=float, required=True)
     p.add_argument("--hook", default="")
     p.add_argument("--out", required=True)
-    p.add_argument("--layout", choices=["fit", "crop"], default="fit")
+    p.add_argument("--layout", choices=["fit", "crop", "track"], default="fit",
+                   help="track = Vollbild, der Ausschnitt folgt automatisch dem Gesicht")
     p.add_argument("--zoom", type=float, default=1.25, help="nur fit: wie stark das Video vergrößert wird")
     p.add_argument("--crop-x", type=float, default=0.5, help="nur crop: 0 = links, 0.5 = Mitte, 1 = rechts")
     p.add_argument("--precrop", help="ffmpeg-crop vorab, z. B. 'iw:ih*0.85:0:ih*0.15' schneidet oben Overlays/Logos weg")

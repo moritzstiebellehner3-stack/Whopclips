@@ -11,8 +11,7 @@ Kampagnen-Daten: [`campaigns/`](campaigns/)
    - TJR: Kick-Clips/VODs, z. B. die meistgesehenen Clips der Woche:
      `curl -s "https://kick.com/api/v2/channels/tjr/clips?sort=view&time=week"`, dann
      `yt-dlp -o "work/sources/tjr/%(id)s.%(ext)s" https://kick.com/tjr/clips/<clip_id>`
-   - Juliano: TikTok @thewolfofinsurance:
-     `yt-dlp --impersonate chrome -o "work/sources/juliano/%(id)s.%(ext)s" <tiktok-url>`
+   - Juliano: YouTube @Julianomass von einem normalen Rechner aus (`yt-dlp`), oder Moritz stellt das Material bereit. TikTok nicht per Impersonation laden.
    - YouTube blockt Downloads von Cloud-Servern meist („Sign in to confirm you're not a bot“). Von einem normalen Rechner aus klappt `yt-dlp` mit YouTube in der Regel.
 2. **Transkribieren:** `python -m clipper.transcribe work/sources/tjr/<id>.mp4`
 3. **Die besten Momente aussuchen** (lustige Momente, starke Zitate, Reaktionen, Geld-Zahlen) und in `plans/<datum>.json` eintragen.

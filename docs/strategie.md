@@ -44,8 +44,9 @@ Den Link musst du **innerhalb von 30 Minuten nach dem Posten** in Content Reward
 - Format 1080x1920 mit 30 fps. Die Lautstärke wird auf -14 LUFS normalisiert, das ist der Standard der Plattformen.
 - **Hook-Titel** oben: schwarze Schrift auf weißem Kasten. Er formuliert eine Neugier-Lücke oder Geld-Zahl, zum Beispiel „TJR to the guy who trades high at 9AM“.
 - **Wort-für-Wort-Untertitel** in Großbuchstaben. Das gesprochene Wort ist gelb, jeder neue Wortblock „poppt“ kurz auf. Schimpfwörter werden im Bild zensiert (F*CK), sonst drosselt TikTok die Reichweite.
-- **Layout `crop`** ist für Gesichter (Vollbild-Ausschnitt). Er schneidet auch Sponsor-Logos am Rand weg.
-- **Layout `fit`** ist für breite Szenen mit mehreren Personen: Das Video steht mittig, der Hintergrund ist unscharf.
+- **Immer Vollbild (Moritz' Clean-Stil), kein unscharfer Hintergrund.**
+  - **Layout `crop`** ist ein fester Ausschnitt. Er schneidet auch Sponsor-Logos am Rand weg.
+  - **Layout `track`** folgt automatisch dem Gesicht und ist gut für Handy-/IRL-Aufnahmen, in denen die Person wandert.
 
 ## Musik / Sound
 Wir brennen **keine** Chart-Musik ins Video ein. Das würde zu Copyright-Stummschaltung und Ablehnung führen.
