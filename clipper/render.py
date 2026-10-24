@@ -3,7 +3,7 @@
 - Hook-Titel oben (schwarze Schrift auf weißem Kasten, wie bei den erfolgreichen Clip-Accounts)
 - Wort-für-Wort-Untertitel, das gesprochene Wort ist gelb hervorgehoben
 - Layout "fit": Video mittig, unscharfer Hintergrund. Layout "crop": Vollbild-Ausschnitt (gut für Gesichter)
-- Lautstärke auf -14 LUFS normalisiert, optional leise Hintergrundmusik (nur lizenzfreie Tracks!)
+- Lautstärke auf -14 LUFS normalisiert, optional Hintergrundmusik 14 dB unter der Stimme (nur lizenzfreie Tracks!)
 
     python -m clipper.render --src work/sources/ID.mp4 --words work/sources/ID.words.json \
         --start 61.2 --end 92.8 --hook "He made $800K in one day" --out output/clip.mp4
@@ -125,8 +125,10 @@ def render(a) -> None:
         audio = "[0:a]loudnorm=I=-14:TP=-1.5:LRA=11"
         if a.music:
             cmd += ["-stream_loop", "-1", "-i", a.music]
+            # Musik auf feste Lautheit unter der Stimme bringen (Stimme = -14 LUFS), damit jeder Track gleich leise liegt
             audio += (
-                f"[voice];[1:a]volume={a.music_vol},afade=t=out:st={max(dur - 1.5, 0)}:d=1.5[mus];"
+                f"[voice];[1:a]loudnorm=I={-14 + a.music_db}:TP=-3,afade=t=in:d=0.4,"
+                f"afade=t=out:st={max(dur - 1.5, 0)}:d=1.5[mus];"
                 f"[voice][mus]amix=inputs=2:duration=first:normalize=0"
             )
         audio += "[a]"
@@ -153,5 +155,5 @@ if __name__ == "__main__":
     p.add_argument("--crop-x", type=float, default=0.5, help="nur crop: 0 = links, 0.5 = Mitte, 1 = rechts")
     p.add_argument("--precrop", help="ffmpeg-crop vorab, z. B. 'iw:ih*0.85:0:ih*0.15' schneidet oben Overlays/Logos weg")
     p.add_argument("--music", help="lizenzfreie Musikdatei")
-    p.add_argument("--music-vol", type=float, default=0.10)
+    p.add_argument("--music-db", type=float, default=-14, help="Musik-Lautstärke relativ zur Stimme in dB")
     render(p.parse_args())

@@ -1,0 +1,12 @@
+{
+  "_lizenz": "Mixkit Stock Music Free License: kostenlos, auch kommerziell und auf Social Media, ohne Namensnennung. Dateien nicht ins Repo legen (keine Weitergabe der Rohdateien), sie werden bei Bedarf nach work/music/ geladen.",
+  "trap":              {"title": "Trap",              "mood": "dunkel, hart – Ansagen/Rants",       "url": "https://assets.mixkit.co/music/305/305.mp3"},
+  "thunder":           {"title": "Thunder",           "mood": "dunkel, episch",                     "url": "https://assets.mixkit.co/music/318/318.mp3"},
+  "dreaming-big":      {"title": "Dreaming Big",      "mood": "Piano, motivierend",                 "url": "https://assets.mixkit.co/music/31/31.mp3"},
+  "driving-ambition":  {"title": "Driving Ambition",  "mood": "motivierend, treibend",              "url": "https://assets.mixkit.co/music/32/32.mp3"},
+  "tears-of-joy":      {"title": "Tears of Joy",      "mood": "emotional, Piano",                   "url": "https://assets.mixkit.co/music/839/839.mp3"},
+  "hip-hop-02":        {"title": "Hip Hop 02",        "mood": "locker, Hip-Hop – lustige Momente",  "url": "https://assets.mixkit.co/music/738/738.mp3"},
+  "hip-hop-03":        {"title": "Hip Hop 03",        "mood": "locker, Hip-Hop",                    "url": "https://assets.mixkit.co/music/739/739.mp3"},
+  "never-going-broke": {"title": "Never Going Broke", "mood": "Hip-Hop, Geld/Lifestyle",            "url": "https://assets.mixkit.co/music/301/301.mp3"},
+  "basketball":        {"title": "Basketball Training", "mood": "energiegeladen, Hip-Hop",          "url": "https://assets.mixkit.co/music/349/349.mp3"}
+}
