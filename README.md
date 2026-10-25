@@ -33,3 +33,12 @@ python -m clipper.edit edits/2026-10-24-tjr-cinematic.json
 - `look: "hype"` ist Vollbild mit Hook-Box, gelben Wort-Untertiteln, Zoom-Punch, Shake und Flash auf dem Drop.
 - Drop und Beat werden aus dem Song gemessen. Der Drop fällt genau aufs Intro-Ende, jeder Schnitt sitzt auf einem Beat (`beats` pro Shot).
 - `cx` ist die Position der Person (0 = links, 1 = rechts). Mit `precrop` schneidest du vorher Overlays, Chat und Logos weg.
+
+## Clips automatisch auf Moritz' PC
+
+1. In der Cloud: `python -m clipper.publish 2026-10-25`. Das baut `output/Whop-Campaign/<Datum>/…` und pusht die letzten 7 Tage auf den Branch `videos`.
+2. Auf dem PC (einmalig, in PowerShell):
+   ```powershell
+   $d="$env:LOCALAPPDATA\whop-sync"; mkdir $d -Force | Out-Null; irm https://raw.githubusercontent.com/moritzstiebellehner3-stack/Whopclips/refs/heads/claude/serene-gauss-am057q/tools/whop-sync.ps1 -OutFile "$d\whop-sync.ps1"; powershell -ExecutionPolicy Bypass -File "$d\whop-sync.ps1" -Install
+   ```
+   Das legt den Aufgabenplaner-Task „Whop-Clips holen“ an (bei Anmeldung + alle 30 min). Er kopiert neue Tage nach `Videos\Whop-Campaign` und zeigt eine Benachrichtigung. Er löscht nichts, und selbst gelöschte Tage kommen nicht zurück. Das Protokoll liegt in `%LOCALAPPDATA%\whop-sync\sync.log`.
