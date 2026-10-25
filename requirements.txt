@@ -2,5 +2,6 @@ yt-dlp[default,curl-cffi]
 yt-dlp-ejs
 faster-whisper
 opencv-python-headless<5
+pillow
 numpy
 librosa

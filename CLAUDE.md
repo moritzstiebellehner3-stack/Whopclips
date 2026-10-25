@@ -11,6 +11,11 @@ Whopclips produziert Clips für Whop-/Reach-Clipping-Kampagnen, aktuell **TJR** 
   - Pflicht-Hashtag
   - nur offizielle Quellen
 - Ablauf: Material holen → `python -m clipper.transcribe` → Momente aussuchen → `plans/<datum>.json` → `python -m clipper.batch plans/<datum>.json`. Details stehen in `README.md`.
+- **TJR-Clips immer im Stil von @tjr.clips.core** (`python -m clipper.core edits/<datum>-tjr-<thema>.json`). Einzelheiten in `docs/strategie.md`.
+  - Volles Gesicht: Quadrat-Layout mit dem Titel „TJR Mentality.“
+  - Stream-Clips: `layout: "split"`, also Facecam oben, Chart unten und eine Hook-Box.
+  - Caption: `@TJR <kurzer Satz>.<1–2 Emojis> #TJR #mentality #tjrtrades #daytrading #edit`
+  - Keine Momente nehmen, die @tjr.clips.core schon gepostet hat (z. B. „Your life is ruined“, „That's the type of people that win“).
 - **Stil (Moritz' Clean-Stil für Kampagnen):** Vollbild 9:16 mit `layout: crop` oder `track` (folgt dem Gesicht). **Kein unscharfer Hintergrund** (`fit` nicht verwenden).
 - Cloud-Hinweise:
   - YouTube blockt Downloads aus der Cloud.

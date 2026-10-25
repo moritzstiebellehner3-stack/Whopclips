@@ -57,3 +57,28 @@ Wir brennen **keine** Chart-Musik ins Video ein. Das würde zu Copyright-Stummsc
 - TJR: `{Hook} @TJR #TJR #tjrtrades #tjrclips #daytrading`
 - Juliano: `{Hook} #JulianoMassarelli #sales #lifeinsurance #motivation #mindset`
 - Alles auf Englisch, damit das Publikum zu mindestens 50 % aus USA, UK, CA, AU oder NZ kommt.
+
+## TJR-Stil: @tjr.clips.core (vermessen am 25.10.2026)
+
+Profil: „TJR Clips“, 4.970 Follower, 75,9K Likes, 21 Videos. Die 10 neuesten Videos liegen bei 954 bis 66.200 Aufrufen.
+
+| Video | Aufrufe | Format | Aufbau |
+|---|---|---|---|
+| „@TJR Mentality.📈💵“ | **66.200** | 9:16, Quadrat in der Mitte | 3 Zitate zum Thema Schule und Geld, dazwischen schwarze „MENTALITY.“-Karten, am Ende „FACTS.“ |
+| „W TJR📈“ | 7.318 | 1:1 | Zitat (Vater/Mentor), am Ende kurze Lifestyle-Montage |
+| „thoughts on school“ | 7.286 | 1:1 | Zitat, dann Lifestyle-Montage mit „FACTS.“ darüber |
+| „The goat.🐐“ | 6.120 | 16:9 | 45 s Podcast-Ausschnitt am Stück |
+| „got rugged on beat drop“ | 5.610 | 9:16 split | Facecam oben, Chart unten, weiße Hook-Box |
+
+**Merkmale:**
+- **Untertitel:** immer nur **ein Wort**. Groß, in Großbuchstaben, schwere Schrift, metallischer Eis-Verlauf (weiß → hellblau) mit Schatten, auf Stirnhöhe. Flüche zensiert (F\*\*\*ING).
+- **Farben:** stark gesättigt (kräftiges Blau/Türkis/Rot).
+- **Schnitt:** kaum Schnitte (0–5 pro Video). Das Zitat trägt das Video, nicht die Montage.
+- **Ton:** Musik läuft leise unter der Stimme durch (112–144 BPM).
+- **Caption:** `@TJR <kurzer Satz>.<Emojis> #TJR #mentality #tjrtrades #daytrading #edit`
+
+**Umsetzung:** `clipper/core.py`
+- **Quadrat-Layout** für volle Gesichtsaufnahmen: `cx`/`cy`/`zoom` legen den Ausschnitt fest, `precrop` schneidet vorher etwas weg.
+- **Split-Layout** für Stream-Clips: `cam` und `chart` als Pixel-Rechtecke in der Quelle, dazu `hook`.
+- **Karten:** `{"card": "MENTALITY."}` zwischen den Zitaten, `{"card": "FACTS."}` am Ende.
+- **Schrift:** Montserrat Black und Inter SemiBold (Google Fonts, OFL). Sie werden bei Bedarf nach `work/fonts/` geladen.
