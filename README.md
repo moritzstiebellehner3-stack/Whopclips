@@ -34,6 +34,18 @@ python -m clipper.edit edits/2026-10-24-tjr-cinematic.json
 - Drop und Beat werden aus dem Song gemessen. Der Drop fällt genau aufs Intro-Ende, jeder Schnitt sitzt auf einem Beat (`beats` pro Shot).
 - `cx` ist die Position der Person (0 = links, 1 = rechts). Mit `precrop` schneidest du vorher Overlays, Chat und Logos weg.
 
+## Real Talk, Cold Call, Hype (15–30 s) – Standard seit 25.10.
+
+```
+python -m clipper.kickvod list                                    # TJRs Kick-VODs
+python -m clipper.kickvod get 131052820 --tail 25                 # Stream-Ende in 160p → transkribieren, Momente suchen
+python -m clipper.kickvod get 131052820 --from 3968 --to 4002 --quality 1080p60
+python -m clipper.realtalk edits/2026-10-26-tjr-idareyou.json
+```
+- **Plan:** `parts` ist eine Liste aus Sprech-Teilen (`src`, `start`, `end`, `box`, `music: full|under|off|dB`) und Edit-Teilen (`edit`: Luxus-Schnitte, `beats` pro Schnitt).
+- **Drop:** fällt auf den Teil mit `"sync": true`, sonst auf den Anfang des Edits.
+- **Stil:** `style: "tjr"` (Facecam, weiße 2-Wort-Untertitel) oder `"juliano"` (Band mit gewölbten Kanten, große Serifen-Wörter, `big` für Schlüsselwörter). `fix` korrigiert Whisper-Fehler in den Untertiteln.
+
 ## Clips automatisch auf Moritz' PC
 
 1. In der Cloud: `python -m clipper.publish 2026-10-25`. Das baut `output/Whop-Campaign/<Datum>/…` und pusht die letzten 7 Tage auf den Branch `videos`.

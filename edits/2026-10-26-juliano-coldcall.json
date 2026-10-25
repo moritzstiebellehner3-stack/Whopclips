@@ -1,0 +1,15 @@
+{
+ "out": "output/2026-10-26/juliano/tiktok.mp4",
+ "style": "juliano",
+ "title": "Cold calling a Bitcoin OG 😭📞",
+ "music": "trapanomics",
+ "big": ["Bitcoin", "$60", "fire", "fight"],
+ "parts": [
+  {"src": "work/sources/juliano/7696641697165348126.mp4", "start": 12.2, "end": 14.0, "box": [0, 250, 1080, 900], "music": "full", "voice": false, "subs": false},
+  {"src": "work/sources/juliano/7696641697165348126.mp4", "start": 0.0, "end": 6.95, "box": [0, 250, 1080, 900], "music": "off"},
+  {"src": "work/sources/juliano/7696641697165348126.mp4", "start": 110.8, "end": 120.1, "box": [0, 250, 1080, 900], "music": "off"},
+  {"src": "work/sources/juliano/7696641697165348126.mp4", "start": 120.1, "end": 123.4, "box": [0, 250, 1080, 900], "music": "off"},
+  {"src": "work/sources/juliano/7696641697165348126.mp4", "start": 123.4, "end": 129.7, "box": [0, 300, 1080, 900], "music": -5, "sync": true}
+ ],
+ "caption": "He really hung up on me 😭📞 #JulianoMassarelli #coldcalling #sales #lifeinsurance #salesman"
+}

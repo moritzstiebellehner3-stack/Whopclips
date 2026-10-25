@@ -1,0 +1,18 @@
+{
+ "out": "output/2026-10-26/tjr/youtube.mp4",
+ "style": "tjr",
+ "frame": [1080, 760, 580],
+ "music": "sparta",
+ "under_db": -17,
+ "fix": {"Kysonat": "Kai Cenat"},
+ "parts": [
+  {"src": "work/sources/tjr_vod/vod129873106_5138-5201_1080p60.mp4", "start": 21.45, "end": 31.5, "box": [0, 700, 684, 380], "cx": 0.17},
+  {"src": "work/sources/tjr_vod/vod129873106_5138-5201_1080p60.mp4", "start": 39.9, "end": 52.65, "box": [0, 700, 684, 380], "cx": 0.17},
+  {"beats": 4, "edit": [
+   {"src": "work/sources/tjr_edit/clip_01HSYKMQQ4WDEBNDBYNVG680BG.mp4", "start": 22.4},
+   {"src": "work/sources/tjr/clip_01M3HBTYVSSVX79TRRHYTQ98QV.mp4", "start": 27.6, "box": [0, 120, 1920, 960]},
+   {"src": "work/sources/tjr/clip_01M3Y9NJRMNANKR2AWAWXXJBEB.mp4", "start": 1.2, "cx": 0.5, "beats": 4}
+  ]}
+ ],
+ "caption": "@TJR on Kai Cenat.🤝💯 #TJR #mentality #tjrtrades #daytrading #edit"
+}

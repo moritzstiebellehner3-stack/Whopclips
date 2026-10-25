@@ -1,0 +1,16 @@
+{
+ "out": "output/2026-10-26/juliano/instagram.mp4",
+ "style": "juliano",
+ "frame": [1080, 760, 580],
+ "title": "Closing a $1M policy on a cold call 🔥📞",
+ "music": "never-going-broke",
+ "big": ["million", "life", "lit", "math"],
+ "parts": [
+  {"src": "work/sources/juliano/7696685453952421150.mp4", "start": 123.0, "end": 124.75, "box": [100, 656, 700, 470], "music": "full", "voice": false, "subs": false},
+  {"src": "work/sources/juliano/7696685453952421150.mp4", "start": 126.8, "end": 132.3, "box": [100, 656, 700, 470], "music": "off"},
+  {"src": "work/sources/juliano/7696685453952421150.mp4", "start": 138.3, "end": 141.7, "box": [100, 656, 700, 470], "music": "off"},
+  {"src": "work/sources/juliano/7696685453952421150.mp4", "start": 152.9, "end": 155.0, "box": [100, 656, 700, 470], "music": "off"},
+  {"src": "work/sources/juliano/7696685453952421150.mp4", "start": 163.3, "end": 171.4, "box": [200, 656, 700, 470], "music": -4, "sync": true}
+ ],
+ "caption": "$1M policy closed on a cold call 🔥 #JulianoMassarelli #sales #coldcalling #lifeinsurance #closer"
+}

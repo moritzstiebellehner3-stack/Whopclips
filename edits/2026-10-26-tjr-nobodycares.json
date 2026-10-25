@@ -1,0 +1,17 @@
+{
+ "out": "output/2026-10-26/tjr/tiktok.mp4",
+ "style": "tjr",
+ "frame": [1080, 760, 580],
+ "music": "trap",
+ "under_db": -17,
+ "parts": [
+  {"src": "work/sources/tjr_edit/clip_01M464QTTZSETBES3Q5YMP9S0J.mp4", "start": 11.75, "end": 31.15, "box": [0, 698, 680, 382], "cx": 0.45},
+  {"beats": 4, "edit": [
+   {"src": "work/sources/tjr_edit/clip_01HSYKMQQ4WDEBNDBYNVG680BG.mp4", "start": 21.6},
+   {"src": "work/sources/tjr/clip_01M3Y9NJRMNANKR2AWAWXXJBEB.mp4", "start": 0.4, "cx": 0.55},
+   {"src": "work/sources/tjr/clip_01M3HBTYVSSVX79TRRHYTQ98QV.mp4", "start": 24.1, "box": [0, 120, 1920, 960]},
+   {"src": "work/sources/tjr/clip_01M3DDYS5Z064P9DSFCYR5TVQ7.mp4", "start": 15.0, "box": [60, 0, 1100, 775], "beats": 6}
+  ]}
+ ],
+ "caption": "@TJR Nobody cares.😭💯 #TJR #mentality #tjrtrades #daytrading #edit"
+}

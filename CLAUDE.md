@@ -11,15 +11,19 @@ Whopclips produziert Clips für Whop-/Reach-Clipping-Kampagnen, aktuell **TJR** 
   - Pflicht-Hashtag
   - nur offizielle Quellen
 - Ablauf: Material holen → `python -m clipper.transcribe` → Momente aussuchen → `plans/<datum>.json` → `python -m clipper.batch plans/<datum>.json`. Details stehen in `README.md`.
-- **TJR-Clips immer im Stil von @tjr.clips.core** (`python -m clipper.core edits/<datum>-tjr-<thema>.json`). Einzelheiten in `docs/strategie.md`.
-  - Volles Gesicht: Quadrat-Layout mit dem Titel „TJR Mentality.“
-  - Stream-Clips: `layout: "split"`, also Facecam oben, Chart unten und eine Hook-Box.
+- **Alle Clips 15–30 Sekunden**, nie länger. Musik läuft immer unter der Stimme. Neue Formate nach Moritz' 5 Vorlagen vom 25.10. (Details in `docs/strategie.md`, Renderer `python -m clipper.realtalk edits/<datum>-<kampagne>-<thema>.json`).
+- **TJR = „Real Talk“** (`style: "tjr"`):
+  - TJR redet einfach (Mindset, Ansagen, Respekt, Haters). **Kein Trading-Erklären, keine Charts, kein Hook.**
+  - Nur die Facecam, Musik leise darunter, am Ende ein **Edit mit Luxus-Schnitten von TJR im Beat** (Drop auf dem ersten Schnitt).
+  - Quelle: Kick-VODs über `python -m clipper.kickvod` (Stream-Enden transkribieren, Ausschnitt in 1080p60 holen).
   - Caption: `@TJR <kurzer Satz>.<1–2 Emojis> #TJR #mentality #tjrtrades #daytrading #edit`
   - Keine Momente nehmen, die @tjr.clips.core schon gepostet hat (z. B. „Your life is ruined“, „That's the type of people that win“).
-- **Juliano-Clips im Stil seiner viralen „Real sales call“-Videos** (38,8M / 22,3M / 8,8M Aufrufe): `python -m clipper.core` mit `layout: "band"`.
-  - Schwarzes 9:16, Titel mit Emojis darüber, Querformat-Bild in der Mitte.
-  - Kleine Satz-Untertitel, keine Musik.
-- **Stil (Moritz' Clean-Stil für Kampagnen):** Vollbild 9:16 mit `layout: crop` oder `track` (folgt dem Gesicht). **Kein unscharfer Hintergrund** (`fit` nicht verwenden).
+- **Juliano = „Cold Call“ oder „Hype“** (`style: "juliano"`):
+  - Cold Call: Musik, während er wartet, aus während des Calls. Der Kunde legt auf oder sagt ab, dann Drop: Musik voll, Juliano voller Energie.
+  - Hype: Juliano überdreht mit seinem Team im Büro, Beat-Schnitte.
+  - Schwarzes 9:16, Titel mit Emojis, Band mit gewölbten Kanten.
+  - **Große weiße Serifen-Untertitel** (DM Serif Display, 1–2 Wörter, Schlüsselwörter extra groß), wie in seinen Podcast-Clips.
+- **Clean-Stil:** **Kein unscharfer Hintergrund** (`fit` nicht verwenden). Schwarze Flächen um das Bild wie in Moritz' Vorlagen sind okay, bei `clipper.render` Vollbild mit `crop`/`track`.
 - Cloud-Hinweise:
   - YouTube blockt Downloads aus der Cloud.
   - TJR-Material kommt deshalb von Kick (`kick.com/api/v2/channels/tjr/clips?sort=view&time=week`).

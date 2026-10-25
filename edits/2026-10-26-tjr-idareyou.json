@@ -1,0 +1,18 @@
+{
+ "out": "output/2026-10-26/tjr/instagram.mp4",
+ "style": "tjr",
+ "frame": [1080, 760, 580],
+ "music": "thunder",
+ "drop": 62,
+ "under_db": -17,
+ "parts": [
+  {"src": "work/sources/tjr_vod/vod131052820_3962-4012_1080p60.mp4", "start": 14.6, "end": 34.25, "box": [0, 700, 684, 380], "cx": 0.4}, 
+  {"beats": 2, "edit": [
+   {"src": "work/sources/tjr/clip_01M3Y9NJRMNANKR2AWAWXXJBEB.mp4", "start": 4.3, "cx": 0.6},
+   {"src": "work/sources/tjr_edit/clip_01HSYKMQQ4WDEBNDBYNVG680BG.mp4", "start": 12.2},
+   {"src": "work/sources/tjr/clip_01M3HBTYVSSVX79TRRHYTQ98QV.mp4", "start": 3.0, "box": [0, 120, 1920, 960]},
+   {"src": "work/sources/tjr/clip_01M3DDYS5Z064P9DSFCYR5TVQ7.mp4", "start": 18.5, "box": [60, 0, 1100, 775], "beats": 4}
+  ]}
+ ],
+ "caption": "@TJR I dare you.😤🔥 #TJR #mentality #tjrtrades #daytrading #edit"
+}

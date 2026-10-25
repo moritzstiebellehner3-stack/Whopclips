@@ -1,0 +1,29 @@
+{
+ "out": "output/2026-10-26/juliano/youtube.mp4",
+ "style": "juliano",
+ "frame": [1080, 1350, 330],
+ "title": "A regular day at the agency 😤🔥",
+ "music": "basketball",
+ "drop": 58,
+ "parts": [
+  {"src": "work/sources/juliano/7696583847080643870.mp4", "start": 19.6, "end": 21.4, "cy": 0.45, "music": "full", "voice": false, "subs": false},
+  {"beats": 2, "edit": [
+   {"src": "work/sources/juliano/7696583847080643870.mp4", "start": 24.6, "cy": 0.45, "beats": 4},
+   {"src": "work/sources/juliano/7696583847080643870.mp4", "start": 38.2, "cy": 0.5},
+   {"src": "work/sources/juliano/7696583847080643870.mp4", "start": 43.6, "cy": 0.5},
+   {"src": "work/sources/juliano/7696583847080643870.mp4", "start": 49.8, "cy": 0.45},
+   {"src": "work/sources/juliano/7696583847080643870.mp4", "start": 53.0, "cy": 0.45},
+   {"src": "work/sources/juliano/7696583847080643870.mp4", "start": 55.0, "cy": 0.4},
+   {"src": "work/sources/juliano/7696583847080643870.mp4", "start": 57.2, "cy": 0.3},
+   {"src": "work/sources/juliano/7696583847080643870.mp4", "start": 66.0, "cy": 0.45},
+   {"src": "work/sources/juliano/7696583847080643870.mp4", "start": 70.0, "cy": 0.5},
+   {"src": "work/sources/juliano/7696583847080643870.mp4", "start": 75.6, "cy": 0.5},
+   {"src": "work/sources/juliano/7696583847080643870.mp4", "start": 91.0, "cy": 0.5},
+   {"src": "work/sources/juliano/7696583847080643870.mp4", "start": 102.0, "cy": 0.55},
+   {"src": "work/sources/juliano/7696583847080643870.mp4", "start": 116.6, "cy": 0.5},
+   {"src": "work/sources/juliano/7696583847080643870.mp4", "start": 120.4, "cy": 0.5},
+   {"src": "work/sources/juliano/7696583847080643870.mp4", "start": 79.4, "cy": 0.3, "beats": 4}
+  ]}
+ ],
+ "caption": "A regular day at the agency 😤🔥 #JulianoMassarelli #entrepreneur #sales #officevibes #lifeinsurance"
+}

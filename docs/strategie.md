@@ -95,3 +95,36 @@ Profil: „TJR Clips“, 4.970 Follower, 75,9K Likes, 21 Videos. Die 10 neuesten
 **Umsetzung:** `clipper/core.py`, `layout: "band"`, `cy` = Bildausschnitt in der Höhe, `"music": null`.
 
 **Quelle:** Die Embed-Downloads tragen das TikTok-Wasserzeichen. Deshalb kommen wasserzeichenfreie Videos von Moritz (ssstik) oder von YouTube.
+
+## Neue Formate nach Moritz' 5 Vorlagen (25.10.2026) – gelten ab jetzt
+
+Moritz' Kritik an den bisherigen Clips: zu viel Trading-Erklären und Charts, zu lang (1 Minute), Juliano-Untertitel schlecht. Neue Regeln:
+- **Alle Clips 15–30 Sekunden**, nie länger.
+- **Bei allen 5 Vorlagen läuft durchgehend Musik unter der Stimme** (gemessen: kein Moment ohne Grundpegel).
+- Die 5 Vorlagen selbst (`work/reference/moritz-beispiele/ref1–5.mp4`) sind fremde Clips und werden **nie reposted**.
+
+| Vorlage | Inhalt | Bild | Untertitel |
+|---|---|---|---|
+| ref1 (26 s) | Juliano im Podcast | schwarzes 9:16, Band mit gewölbten, weich auslaufenden Kanten | **große weiße Serifen-Wörter** (1–2), mitten im Bild, weicher Schatten, Schlüsselwort riesig („what“) |
+| ref2 (60 s) | TJR Selfie, Real Talk | 1:1 | kleine weiße Sätze, einzelne Wörter farbig |
+| ref3 (34 s) | TJR Real Talk + B-Roll dazwischen (Gym, Strand, Büro) | 1:1, Glow-Look | weiß, fett, 2 Wörter, Bildmitte |
+| ref4 (22 s) | TJR redet in die Kamera | 16:9 | große weiße Großbuchstaben, 2 Wörter |
+| ref5 (43 s) | Juliano Cold Call („Watch how Juliano handles ‚I'm not interested'“) | Band + Titel darüber | kleine Großbuchstaben |
+
+### TJR „Real Talk“ (`clipper/realtalk.py`, `style: "tjr"`)
+- **Inhalt:** TJR redet einfach – Mindset, Ansagen, Respekt, Haters. **Kein Trading-Erklären, keine Charts, kein Hook.**
+- **Bild:** nur die Facecam (ohne Sponsor-Badge, ohne „NOT FINANCIAL ADVICE“), als Band `[1080, 760, 580]` auf Schwarz, leichter Glow-Look.
+- **Untertitel:** 1–2 Wörter, Montserrat ExtraBold, weiß mit weichem Schatten, auf Brusthöhe.
+- **Ton:** Musik −17 dB unter der Stimme, dann **Edit am Ende**: Luxus-Schnitte von TJR im Beat, der Drop sitzt auf dem ersten Schnitt (weißer Flash), Musik voll.
+- **Musik:** lizenzfreie, dunkle Trap-/Epic-Tracks (Trap, Thunder, Sparta). LEGACY selbst hat Copyright und wird nicht eingebrannt.
+- **Quelle:** Kick-VODs. `python -m clipper.kickvod get <id> --tail 25` holt das Stream-Ende zum Transkribieren, `--from/--to --quality 1080p60` den Ausschnitt.
+- **Grenze:** Echter Real Talk ist auf Kick selten, er läuft meist über Trades. Auch Luxus-B-Roll von TJR gibt es dort kaum (Miami-Penthouse, Villa, Chrome-Hearts-Store, Sprinter, **keine Lambos**). Für mehr braucht es Material von YouTube oder Instagram, das Moritz vom PC aus bereitlegt.
+
+### Juliano „Cold Call“ und „Hype“ (`clipper/realtalk.py`, `style: "juliano"`)
+- **Cold Call:**
+  - Musik am Anfang (er wartet), Musik aus während des Calls.
+  - Der Kunde legt auf oder sagt ab, Julianos Reaktion folgt.
+  - Dann **Drop**: Musik wieder voll, er ist voller Energie.
+- **Hype:** Juliano überdreht im Büro mit seinem Team, Beat-Schnitte, nur Musik.
+- **Bild:** wie ref1, schwarzes 9:16 mit Titel und Emojis, Band mit gewölbten Kanten. Für Ganzkörper-Szenen 4:5 (`frame: [1080, 1350, 330]`).
+- **Untertitel:** **DM Serif Display**, groß und weiß, 1–2 Wörter mitten im Bild. Schlüsselwörter (`big`) stehen allein und extra groß.
