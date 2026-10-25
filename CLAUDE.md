@@ -29,6 +29,10 @@ Whopclips produziert Clips für Whop-/Reach-Clipping-Kampagnen, aktuell **TJR** 
 - **Luxus-B-Roll** (Autos, Uhren, Penthouse; für Moritz' eigene Edits): `python -m clipper.broll edits/<datum>-broll.json`.
   - 9:16, ohne Text, ohne Musik, ohne Ton.
   - Landet über `publish` in `<Datum>/Luxus-B-Roll/`.
+- **Sounds:** `campaigns/sounds.md` ist die Liste der beliebtesten Sounds der Clip-Accounts mit TikTok-Links, zum Auswählen in der App.
+  - `python -m clipper.sounds <datum>` schneidet lizenzfreie Mixkit-Tracks auf den Drop.
+  - **Copyright-Songs nie als Datei laden oder einbrennen.**
+  - **Mixkit-MP3s nie auf den öffentlichen Branch `videos`**, nur als ZIP an Moritz.
 - **Nach jedem fertigen Tag:** `python -m clipper.publish <datum>` ausführen.
   - Das legt die Clips auf den Branch `videos` (immer nur die letzten 7 Tage, als ein Commit, force).
   - Moritz' PC holt sie mit dem Aufgabenplaner-Task „Whop-Clips holen“ (`tools/whop-sync.ps1`) automatisch nach `Videos\Whop-Campaign`.

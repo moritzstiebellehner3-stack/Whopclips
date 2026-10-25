@@ -66,6 +66,13 @@ def build_day(day: str) -> Path:
         for f in sorted(broll.glob("*.mp4")):
             shutil.copy(f, base / "Luxus-B-Roll" / f.name)
         notes.append("## Luxus-B-Roll\nKurze Schnipsel ohne Text und ohne Ton für eigene Edits: `Luxus-B-Roll/`\n")
+    if (ROOT / "output" / day / "sounds").exists():
+        # nur die Linkliste – die Mixkit-MP3s dürfen nicht öffentlich auf GitHub (gehen als ZIP an Moritz)
+        (base / "Sounds").mkdir(parents=True, exist_ok=True)
+        text = (ROOT / "campaigns" / "sounds.md").read_text()
+        (base / "Sounds" / "SOUNDS.md").write_text(text)
+        (base / "Sounds" / "SOUNDS.txt").write_text(text.replace("\n", "\r\n"), encoding="utf-8-sig")
+        notes.append("## Sounds\nTop-Sounds der TJR-/Juliano-Clip-Accounts mit Links: `Sounds/SOUNDS.md`\n")
     (base / "Alle_Captions.md").write_text("\n".join(notes))
     return base
 
