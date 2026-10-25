@@ -1,0 +1,92 @@
+{
+ "day": "2026-10-26",
+ "clips": [
+  {
+   "name": "Juliano_Penthouse-Blick_01",
+   "src": "work/sources/juliano/7699502547555454238.mp4",
+   "start": 4.1,
+   "dur": 2.4,
+   "cx": 0.5
+  },
+  {
+   "name": "Juliano_Lamborghini-Outfit_01",
+   "src": "work/sources/juliano/7699502547555454238.mp4",
+   "start": 13.2,
+   "dur": 2.5,
+   "cx": 0.5
+  },
+  {
+   "name": "Juliano_Lamborghini-Urus_01",
+   "src": "work/sources/juliano/7699502547555454238.mp4",
+   "start": 24.3,
+   "dur": 1.0,
+   "cx": 0.5
+  },
+  {
+   "name": "Juliano_Lamborghini-Urus-Einsteigen_01",
+   "src": "work/sources/juliano/7699502547555454238.mp4",
+   "start": 25.3,
+   "dur": 2.3,
+   "cx": 0.5
+  },
+  {
+   "name": "Juliano_Uhr_01",
+   "src": "work/sources/juliano/7696583847080643870.mp4",
+   "start": 29.6,
+   "dur": 3.2,
+   "cx": 0.5
+  },
+  {
+   "name": "Juliano_Office-Miami_01",
+   "src": "work/sources/juliano/7696583847080643870.mp4",
+   "start": 23.0,
+   "dur": 3.0,
+   "cx": 0.5
+  },
+  {
+   "name": "TJR_Penthouse-Miami-Nacht_01",
+   "src": "work/sources/tjr_edit/clip_01HSYKMQQ4WDEBNDBYNVG680BG.mp4",
+   "start": 11.0,
+   "dur": 3.0,
+   "cx": 0.62,
+   "precrop": "iw:ih*0.65:0:ih*0.35"
+  },
+  {
+   "name": "TJR_Penthouse-Miami-Nacht_02",
+   "src": "work/sources/tjr_edit/clip_01HSYKMQQ4WDEBNDBYNVG680BG.mp4",
+   "start": 14.5,
+   "dur": 2.5,
+   "cx": 0.6,
+   "precrop": "iw:ih*0.65:0:ih*0.35"
+  },
+  {
+   "name": "TJR_ChromeHearts-Store_01",
+   "src": "work/sources/tjr/clip_01M3Y9NJRMNANKR2AWAWXXJBEB.mp4",
+   "start": 0.3,
+   "dur": 3.0,
+   "cx": 0.5
+  },
+  {
+   "name": "TJR_ChromeHearts-Store_02",
+   "src": "work/sources/tjr/clip_01M3Y9NJRMNANKR2AWAWXXJBEB.mp4",
+   "start": 4.2,
+   "dur": 3.0,
+   "cx": 0.55
+  },
+  {
+   "name": "TJR_Sprinter-Bus_01",
+   "src": "work/sources/tjr/clip_01M3DDYS5Z064P9DSFCYR5TVQ7.mp4",
+   "start": 20.4,
+   "dur": 2.6,
+   "cx": 0.58
+  },
+  {
+   "name": "TJR_Villa-Terrasse_01",
+   "src": "work/sources/tjr/clip_01M3HBTYVSSVX79TRRHYTQ98QV.mp4",
+   "start": 6.0,
+   "dur": 3.0,
+   "cx": 0.5,
+   "precrop": "iw:ih*0.9:0:ih*0.1"
+  }
+ ]
+}

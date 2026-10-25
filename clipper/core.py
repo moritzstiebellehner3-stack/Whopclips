@@ -218,7 +218,10 @@ def quote_segment(tmp: Path, i: int, s: dict, title: Image.Image) -> tuple[Path,
     elif s.get("layout") == "band":
         # Juliano „Real sales call“: Querformat-Ausschnitt in der Mitte, Titel darüber, Satz-Untertitel unten im Bild
         bh = f"iw*{BAND_H}/{W}"
-        vf = (f"[0:v]crop=iw:{bh}:0:'max(0,min(ih-oh,ih*{s.get('cy', 0.4)}-oh/2))',"
+        # box = festes Rechteck [x, y, b, h] in der Quelle, z. B. um eingebrannte Fremd-Untertitel auszusparen
+        crop = ("crop={2}:{3}:{0}:{1}".format(*s["box"]) if "box" in s
+                else f"crop=iw:{bh}:0:'max(0,min(ih-oh,ih*{s.get('cy', 0.4)}-oh/2))'")
+        vf = (f"[0:v]{crop},"
               f"scale={W}:{BAND_H},pad={W}:{H}:0:{BAND_Y}:black,fps={FPS}[base];"
               f"[1:v]format=rgba[ov];[base][ov]overlay=0:0:format=auto,format=yuv420p[v]")
         layer, word_y = title, BAND_Y + BAND_H - 95

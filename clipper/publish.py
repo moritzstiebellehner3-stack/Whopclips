@@ -5,6 +5,7 @@
 
 Ablauf:
 1. `output/Whop-Campaign/<Datum>/<TJR|Juliano>/<Kampagne>_<Plattform>.mp4` + `_Caption.txt` + `Alle_Captions.md`
+   (+ `Luxus-B-Roll/` aus `output/<Datum>/broll/`, gebaut mit `python -m clipper.broll`)
    aus `plans/<Datum>.json` und `edits/<Datum>-*.json` bauen
 2. die letzten 7 Tage als EINEN Commit ohne Vorgänger auf `videos` pushen (force), damit das Repo nicht wächst
 
@@ -36,6 +37,8 @@ def clips_for(day: str) -> list[dict]:
             clips[out] = {"out": out, "campaign": c["campaign"], "name": c["platform"], "caption": c["caption"]}
     for e in sorted((ROOT / "edits").glob(f"{day}-*.json")):
         p = json.loads(e.read_text())
+        if "out" not in p:  # z. B. B-Roll-Pläne, die landen separat in Luxus-B-Roll/
+            continue
         out = ROOT / p["out"]
         clips[out] = {"out": out, "campaign": out.parent.name, "name": out.stem, "caption": p.get("caption", "")}
     return [c for c in clips.values() if c["out"].exists()]
@@ -57,6 +60,12 @@ def build_day(day: str) -> Path:
             f"{c['caption']}\n\n---\nPosten auf: {where}\n"
             "Nach dem Posten: Link innerhalb von 30 Minuten in Content Rewards (Whop) einreichen!\n")
         notes.append(f"## {camp} – {plat}\nDatei: `{camp}/{name}.mp4`\n```\n{c['caption']}\n```\n")
+    broll = ROOT / "output" / day / "broll"
+    if broll.exists() and any(broll.glob("*.mp4")):
+        (base / "Luxus-B-Roll").mkdir(parents=True, exist_ok=True)
+        for f in sorted(broll.glob("*.mp4")):
+            shutil.copy(f, base / "Luxus-B-Roll" / f.name)
+        notes.append("## Luxus-B-Roll\nKurze Schnipsel ohne Text und ohne Ton für eigene Edits: `Luxus-B-Roll/`\n")
     (base / "Alle_Captions.md").write_text("\n".join(notes))
     return base
 

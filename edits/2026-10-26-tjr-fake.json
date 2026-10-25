@@ -1,0 +1,12 @@
+{
+  "out": "output/2026-10-26/tjr/youtube.mp4",
+  "title": "",
+  "music": "driving-ambition",
+  "music_db": -15,
+  "segments": [
+    {"src": "work/sources/tjr_edit/clip_01M464QTTZSETBES3Q5YMP9S0J.mp4", "start": 10.4, "end": 31.2, "layout": "split",
+     "cam": [0, 696, 684, 384], "chart": [700, 120, 468, 570], "hook": "TJR finds out there's a fake TJR on Kick"},
+    {"card": "FACTS."}
+  ],
+  "caption": "@TJR Nobody cares.😭📈 #TJR #mentality #tjrtrades #daytrading #shorts"
+}
