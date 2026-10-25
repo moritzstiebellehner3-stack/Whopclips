@@ -82,3 +82,16 @@ Profil: „TJR Clips“, 4.970 Follower, 75,9K Likes, 21 Videos. Die 10 neuesten
 - **Split-Layout** für Stream-Clips: `cam` und `chart` als Pixel-Rechtecke in der Quelle, dazu `hook`.
 - **Karten:** `{"card": "MENTALITY."}` zwischen den Zitaten, `{"card": "FACTS."}` am Ende.
 - **Schrift:** Montserrat Black und Inter SemiBold (Google Fonts, OFL). Sie werden bei Bedarf nach `work/fonts/` geladen.
+
+## Juliano-Stil: seine eigenen viralen Videos (vermessen am 25.10.2026)
+
+@thewolfofinsurance: 669.900 Follower, 33,5M Likes. Die drei angepinnten Videos sind alle **„Real sales call“** (38,8M, 22,3M, 8,8M Aufrufe), seine normalen Videos liegen bei 6–53K.
+
+- **Bild:** schwarzes 9:16. Darin ein Querformat-Bild von etwa 1,38:1 in der Mitte (bei 1080×1920: y 535–1317), Titel direkt darüber („Real sales call“ + 😂😭🥀).
+- **Untertitel:** kleiner weißer Satz-Untertitel (ganze Satzstücke, normale Schreibung) unten im Bild.
+- **Ton:** keine Musik, keine Effekte, nur Originalton.
+- **Inhalt:** Juliano telefoniert mit einem Lead und spielt dabei Comedy (tanzt, reagiert, übertreibt).
+
+**Umsetzung:** `clipper/core.py`, `layout: "band"`, `cy` = Bildausschnitt in der Höhe, `"music": null`.
+
+**Quelle:** Die Embed-Downloads tragen das TikTok-Wasserzeichen. Deshalb kommen wasserzeichenfreie Videos von Moritz (ssstik) oder von YouTube.

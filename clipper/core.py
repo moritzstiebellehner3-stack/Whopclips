@@ -12,24 +12,29 @@ import argparse
 import json
 import subprocess
 import tempfile
+import textwrap
 import urllib.request
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 from clipper.batch import ROOT, music_file
-from clipper.render import H, W, censor
+from clipper.render import H, W, censor, chunk_words
 
 FPS = 30
 SQ_Y = (H - W) // 2  # Quadrat 1080×1080 genau in der Mitte
 TITLE_Y = SQ_Y - 70
 WORD_Y = SQ_Y + 265  # Wortmitte, etwa Stirnhöhe
 CARD_LEN = 0.67
+# „Real sales call“-Layout von Juliano (38,8M / 22,3M / 8,8M Aufrufe): Querformat-Bild ~1,38:1 in der Mitte
+BAND_H = 782
+BAND_Y = 535
 GRADE = "eq=saturation=1.55:contrast=1.08:gamma=0.97,unsharp=5:5:0.6"
 FONTS = {
     "Montserrat-Black": "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvC70w-.ttf",
     "Inter-SemiBold": "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf",
 }
+EMOJI_FONT = "/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf"
 
 
 def font(name: str, size: int) -> ImageFont.FreeTypeFont:
@@ -41,12 +46,48 @@ def font(name: str, size: int) -> ImageFont.FreeTypeFont:
     return ImageFont.truetype(str(path), size)
 
 
-def title_layer(title: str) -> Image.Image:
+def title_layer(title: str, y: int = TITLE_Y, size: int = 58) -> Image.Image:
+    """Titel über dem Bild; Emojis (z. B. „Real sales call 😂😭“) kommen aus Noto Color Emoji."""
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    if title:
-        d = ImageDraw.Draw(img)
-        d.text((W // 2, TITLE_Y), title, font=font("Inter-SemiBold", 58), fill="white", anchor="mm")
+    if not title:
+        return img
+    f = font("Inter-SemiBold", size)
+    parts = []  # (Bild, Breite)
+    text = "".join(ch for ch in title if ord(ch) < 0x2000).rstrip()
+    emojis = [ch for ch in title if ord(ch) >= 0x2000 and ch not in "\u200d\ufe0f"]
+    l, t, r, b = f.getbbox(text)
+    txt = Image.new("RGBA", (r - l + 4, size * 2), (0, 0, 0, 0))
+    ImageDraw.Draw(txt).text((-l, size), text, font=f, fill="white", anchor="lm")
+    parts.append(txt)
+    if emojis:
+        ef = ImageFont.truetype(EMOJI_FONT, 109)
+        for e in emojis:
+            em = Image.new("RGBA", (136, 128), (0, 0, 0, 0))
+            ImageDraw.Draw(em).text((0, 0), e, font=ef, embedded_color=True)
+            em = em.crop(em.getbbox() or (0, 0, 1, 1))
+            k = size * 1.05 / em.height
+            parts.append(em.resize((max(1, int(em.width * k)), max(1, int(em.height * k)))))
+    gap = int(size * 0.18)
+    total = sum(p.width for p in parts) + gap * (len(parts) - 1)
+    x = W // 2 - total // 2
+    for p in parts:
+        img.alpha_composite(p, (x, y - p.height // 2))
+        x += p.width + gap
     return img
+
+
+def sentence(text: str, y_mid: int) -> Image.Image:
+    """Kleiner weißer Satz-Untertitel mit weichem Schatten (TikTok-Optik)."""
+    f = font("Inter-SemiBold", 42)
+    canvas = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    lines = textwrap.wrap(text, 34)
+    for k, line in enumerate(lines):
+        yy = y_mid + (k - (len(lines) - 1) / 2) * 52
+        sh = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        ImageDraw.Draw(sh).text((W // 2 + 2, yy + 3), line, font=f, fill=(0, 0, 0, 200), anchor="mm")
+        canvas.alpha_composite(sh.filter(ImageFilter.GaussianBlur(4)))
+        ImageDraw.Draw(canvas).text((W // 2, yy), line, font=f, fill="white", anchor="mm")
+    return canvas
 
 
 def hook_layer(text: str, y_mid: int) -> Image.Image:
@@ -129,21 +170,24 @@ def words_for(src: Path, start: float, end: float):
 
 
 def overlay_track(tmp: Path, name: str, title: Image.Image, words, start: float, dur: float,
-                  word_y: int = WORD_Y) -> Path:
-    """ffconcat-Liste aus Vollbild-PNGs: Titel + jeweils ein Wort, mit exakten Anzeigedauern."""
+                  word_y: int = WORD_Y, sentences: bool = False) -> Path:
+    """ffconcat-Liste aus Vollbild-PNGs: Titel + jeweils ein Wort (oder ein Satzstück), mit exakten Anzeigedauern."""
     frames, t = [], 0.0
     blank = tmp / f"{name}_blank.png"
     title.save(blank)
+    if sentences:
+        words = [{"start": c[0]["start"], "end": c[-1]["end"], "word": " ".join(x["word"] for x in c)}
+                 for c in chunk_words(words, max_words=6, max_gap=0.6)]
     for i, w in enumerate(words):
         w0 = max(w["start"] - start, 0)
         w1 = min(words[i + 1]["start"] - start if i + 1 < len(words) else w["end"] - start + 0.25, dur)
         if w0 > t:
             frames.append((blank, w0 - t))
-        txt = censor(w["word"].strip(".,!?\"“”").upper())
+        txt = censor(w["word"]) if sentences else censor(w["word"].strip(".,!?\"“”").upper())
         if not txt or w1 <= w0:
             continue
         png = tmp / f"{name}_{i:03d}.png"
-        Image.alpha_composite(title, ice_word(txt, word_y)).save(png)
+        Image.alpha_composite(title, sentence(txt, word_y) if sentences else ice_word(txt, word_y)).save(png)
         frames.append((png, w1 - w0))
         t = w1
     if t < dur:
@@ -171,6 +215,13 @@ def quote_segment(tmp: Path, i: int, s: dict, title: Image.Image) -> tuple[Path,
               f"[1:v]format=rgba[ov];[base][ov]overlay=0:0:format=auto,format=yuv420p[v]")
         layer = Image.alpha_composite(title_layer(""), hook_layer(s.get("hook", ""), cam_h - 50))
         word_y = cam_h + 170
+    elif s.get("layout") == "band":
+        # Juliano „Real sales call“: Querformat-Ausschnitt in der Mitte, Titel darüber, Satz-Untertitel unten im Bild
+        bh = f"iw*{BAND_H}/{W}"
+        vf = (f"[0:v]crop=iw:{bh}:0:'max(0,min(ih-oh,ih*{s.get('cy', 0.4)}-oh/2))',"
+              f"scale={W}:{BAND_H},pad={W}:{H}:0:{BAND_Y}:black,fps={FPS}[base];"
+              f"[1:v]format=rgba[ov];[base][ov]overlay=0:0:format=auto,format=yuv420p[v]")
+        layer, word_y = title, BAND_Y + BAND_H - 95
     else:
         pre = f"crop={s['precrop']}," if s.get("precrop") else ""
         side = f"min(iw\\,ih)/{s.get('zoom', 1.0)}"
@@ -180,7 +231,8 @@ def quote_segment(tmp: Path, i: int, s: dict, title: Image.Image) -> tuple[Path,
               f"[1:v]format=rgba[ov];[base][ov]overlay=0:0:format=auto,format=yuv420p[v]")
         layer, word_y = title, WORD_Y
     seg = tmp / f"q{i}.mp4"
-    lst = overlay_track(tmp, f"q{i}", layer, words_for(src, s["start"], s["end"]), s["start"], dur, word_y)
+    lst = overlay_track(tmp, f"q{i}", layer, words_for(src, s["start"], s["end"]), s["start"], dur, word_y,
+                        sentences=s.get("layout") == "band")
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(s["start"]), "-i", str(src),
                     "-f", "concat", "-safe", "0", "-i", str(lst), "-filter_complex", vf, "-map", "[v]",
                     "-frames:v", str(frames), "-an", "-c:v", "libx264", "-preset", "medium", "-crf", "17",
@@ -209,7 +261,10 @@ def build(plan_path: Path) -> None:
     plan = json.loads(plan_path.read_text())
     out = ROOT / plan["out"]
     out.parent.mkdir(parents=True, exist_ok=True)
-    title = title_layer(plan.get("title", "TJR Mentality."))
+    if plan.get("layout") == "band":
+        title = title_layer(plan.get("title", ""), y=BAND_Y - 48, size=54)
+    else:
+        title = title_layer(plan.get("title", "TJR Mentality."))
 
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
@@ -227,14 +282,15 @@ def build(plan_path: Path) -> None:
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(tmp / "a.txt"),
                         str(tmp / "voice.wav")], check=True)
 
-        music = music_file(plan["music"])
+        music = music_file(plan.get("music"))  # ohne Musik: Stille, Originalton bleibt allein (wie bei Juliano)
+        music_in = ["-stream_loop", "-1", "-i", music] if music else ["-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo"]
         fade = 0.6
         audio = (f"[2:a]atrim=start={plan.get('music_start', 0)},asetpts=PTS-STARTPTS,aresample=48000,"
                  f"loudnorm=I={-14 + plan.get('music_db', -12)}:TP=-3,afade=t=in:d=0.3[mus];"
                  f"[1:a][mus]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=11,"
                  f"afade=t=out:st={total - fade}:d={fade}[a]")
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(tmp / "video.mp4"), "-i", str(tmp / "voice.wav"),
-                        "-stream_loop", "-1", "-i", music, "-filter_complex", audio,
+                        *music_in, "-filter_complex", audio,
                         "-map", "0:v", "-map", "[a]", "-t", f"{total:.4f}", "-c:v", "copy",
                         "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", str(out)], check=True)
     print(f"fertig: {out} ({total:.1f} s)")

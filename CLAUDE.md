@@ -16,11 +16,16 @@ Whopclips produziert Clips für Whop-/Reach-Clipping-Kampagnen, aktuell **TJR** 
   - Stream-Clips: `layout: "split"`, also Facecam oben, Chart unten und eine Hook-Box.
   - Caption: `@TJR <kurzer Satz>.<1–2 Emojis> #TJR #mentality #tjrtrades #daytrading #edit`
   - Keine Momente nehmen, die @tjr.clips.core schon gepostet hat (z. B. „Your life is ruined“, „That's the type of people that win“).
+- **Juliano-Clips im Stil seiner viralen „Real sales call“-Videos** (38,8M / 22,3M / 8,8M Aufrufe): `python -m clipper.core` mit `layout: "band"`.
+  - Schwarzes 9:16, Titel mit Emojis darüber, Querformat-Bild in der Mitte.
+  - Kleine Satz-Untertitel, keine Musik.
 - **Stil (Moritz' Clean-Stil für Kampagnen):** Vollbild 9:16 mit `layout: crop` oder `track` (folgt dem Gesicht). **Kein unscharfer Hintergrund** (`fit` nicht verwenden).
 - Cloud-Hinweise:
   - YouTube blockt Downloads aus der Cloud.
   - TJR-Material kommt deshalb von Kick (`kick.com/api/v2/channels/tjr/clips?sort=view&time=week`).
-  - **TikTok nicht per `--impersonate` laden.** Das umgeht den Bot-Schutz, und Moritz will das nicht. Juliano-Material kommt deshalb aus einer Quelle, die Moritz bereitstellt, oder von seinem PC aus (YouTube @Julianomass).
+  - **TikTok nicht per `--impersonate` laden.** Das umgeht den Bot-Schutz, und Moritz will das nicht.
+  - `python -m clipper.tiktok list/get` nutzt das offizielle Embed. Gut für Analyse und Video-Listen, **aber die Videos haben das TikTok-Wasserzeichen** und sind damit als Clip-Quelle tabu (keine Logos).
+  - Juliano-Quellen ohne Wasserzeichen: Moritz lädt sie per ssstik und legt sie bereit, oder sie kommen von seinem PC aus über YouTube @Julianomass.
 - Prüfe jeden fertigen Clip anhand von Standbildern, ob Logos oder Overlays zu sehen sind und ob das Gesicht im Bild bleibt.
 
 ## Obsidian-Vault (Gedächtnis des Nutzers)
