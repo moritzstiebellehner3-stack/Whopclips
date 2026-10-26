@@ -78,5 +78,8 @@
    "sync": true
   }
  ],
- "caption": "\"Would you say I'm good at what I do?\" 📞🔥 #JulianoMassarelli #coldcalling #sales #lifeinsurance #salesman"
+ "caption": "\"Would you say I'm good at what I do?\" 📞🔥 #JulianoMassarelli #coldcalling #sales #lifeinsurance #salesman",
+ "fix": {
+  "Masarelli": "Massarelli"
+ }
 }
