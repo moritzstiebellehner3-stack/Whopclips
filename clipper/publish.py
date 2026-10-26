@@ -91,6 +91,8 @@ def push() -> None:
     git("init", "-q", "-b", "videos")
     for d in days:
         shutil.copytree(OUT / d, BRANCH_DIR / d)
+    # der PC-Task aktualisiert sich selbst aus dieser Kopie
+    shutil.copy(ROOT / "tools" / "whop-sync.ps1", BRANCH_DIR / "whop-sync.ps1")
     (BRANCH_DIR / "README.md").write_text(
         "Fertige Clips der letzten 7 Tage. Wird automatisch überschrieben.\n"
         "Moritz' PC holt sie mit `tools/whop-sync.ps1` (Branch `claude/serene-gauss-am057q`) nach "

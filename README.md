@@ -54,3 +54,9 @@ python -m clipper.realtalk edits/2026-10-26-tjr-idareyou.json
    $d="$env:LOCALAPPDATA\whop-sync"; mkdir $d -Force | Out-Null; irm https://raw.githubusercontent.com/moritzstiebellehner3-stack/Whopclips/refs/heads/claude/serene-gauss-am057q/tools/whop-sync.ps1 -OutFile "$d\whop-sync.ps1"; powershell -ExecutionPolicy Bypass -File "$d\whop-sync.ps1" -Install
    ```
    Das legt den Aufgabenplaner-Task „Whop-Clips holen“ an (bei Anmeldung + alle 30 min). Er kopiert neue Tage nach `Videos\Whop-Campaign` und zeigt eine Benachrichtigung. Er löscht nichts, und selbst gelöschte Tage kommen nicht zurück. Das Protokoll liegt in `%LOCALAPPDATA%\whop-sync\sync.log`.
+3. **Material vom PC in die Cloud:** Alles, was Moritz in `Videos\Whop-Campaign\Material` legt, lädt derselbe Task in das private Repo `moritzstiebellehner3-stack/Whop-Material` hoch.
+   - Dateien bis 95 MB, größere stehen im Protokoll.
+   - Der Ordner wird gespiegelt: Was dort gelöscht wird, verschwindet auch im Repo.
+   - Einmalig: Repo auf github.com/new anlegen (Name `Whop-Material`, **Private**, ohne README) und die Zeile oben noch einmal ausführen. Beim ersten Hochladen fragt Git evtl. nach der GitHub-Anmeldung.
+   - In der Cloud: Repo zur Session hinzufügen, dann `python -m clipper.material --transcribe`. Das holt alles nach `work/material/`, transkribiert neue Videos und listet sie auf.
+4. Das Skript aktualisiert sich selbst: `publish` legt die aktuelle Version mit auf den Branch `videos`, der Task übernimmt sie beim nächsten Lauf.

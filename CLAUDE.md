@@ -30,6 +30,7 @@ Whopclips produziert Clips für Whop-/Reach-Clipping-Kampagnen, aktuell **TJR** 
   - **TikTok nicht per `--impersonate` laden.** Das umgeht den Bot-Schutz, und Moritz will das nicht.
   - `python -m clipper.tiktok list/get` nutzt das offizielle Embed. Gut für Analyse und Video-Listen, **aber die Videos haben das TikTok-Wasserzeichen** und sind damit als Clip-Quelle tabu (keine Logos).
   - Juliano-Quellen ohne Wasserzeichen: Moritz lädt sie per ssstik und legt sie bereit, oder sie kommen von seinem PC aus über YouTube @Julianomass.
+  - **Moritz' Material (TJR und Juliano) zuerst nutzen:** Er legt es in `Videos\Whop-Campaign\Material` auf seinem PC. Der Task „Whop-Clips holen“ lädt es in das private Repo `moritzstiebellehner3-stack/Whop-Material`. In der Session: Repo hinzufügen, dann `python -m clipper.material --transcribe` (landet in `work/material/`).
 - **Luxus-B-Roll** (Autos, Uhren, Penthouse; für Moritz' eigene Edits): `python -m clipper.broll edits/<datum>-broll.json`.
   - 9:16, ohne Text, ohne Musik, ohne Ton.
   - Landet über `publish` in `<Datum>/Luxus-B-Roll/`.
