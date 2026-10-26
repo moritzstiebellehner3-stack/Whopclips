@@ -1,0 +1,50 @@
+{
+ "out": "output/2026-10-27/tjr/youtube.mp4",
+ "style": "tjr",
+ "frame": [
+  1080,
+  1080,
+  420
+ ],
+ "music": "thunder",
+ "drop": 62,
+ "under_db": -17,
+ "parts": [
+  {
+   "src": "work/material/Give Me 93 Seconds And I'll Make You Dangerously Motivated.mp4",
+   "start": 24.15,
+   "end": 35.65
+  },
+  {
+   "src": "work/material/Give Me 93 Seconds And I'll Make You Dangerously Motivated.mp4",
+   "start": 82.4,
+   "end": 92.45
+  },
+  {
+   "beats": 2,
+   "edit": [
+    {
+     "src": "work/sources/tjr/clip_01M3HBTYVSSVX79TRRHYTQ98QV.mp4",
+     "start": 3.0,
+     "box": [
+      0,
+      120,
+      1920,
+      960
+     ]
+    },
+    {
+     "src": "work/sources/tjr_edit/clip_01HSYKMQQ4WDEBNDBYNVG680BG.mp4",
+     "start": 18.5
+    },
+    {
+     "src": "work/sources/tjr/clip_01M3Y9NJRMNANKR2AWAWXXJBEB.mp4",
+     "start": 0.4,
+     "cx": 0.5,
+     "beats": 4
+    }
+   ]
+  }
+ ],
+ "caption": "@TJR Your future self will thank you.🙏💯 #TJR #mentality #tjrtrades #daytrading #edit"
+}

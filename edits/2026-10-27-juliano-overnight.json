@@ -1,0 +1,30 @@
+{
+ "out": "output/2026-10-27/juliano/instagram.mp4",
+ "style": "juliano",
+ "title": "You won't get rich overnight 💯",
+ "music": "trapanomics",
+ "big": [
+  "rich",
+  "overnight",
+  "return",
+  "ASAP"
+ ],
+ "fix": {
+  "late": "lit"
+ },
+ "parts": [
+  {
+   "src": "work/material/YOUR LIFE CAN CHANGE IN 1 YEAR.mp4",
+   "start": 104.55,
+   "end": 121.85
+  },
+  {
+   "src": "work/material/YOUR LIFE CAN CHANGE IN 1 YEAR.mp4",
+   "start": 134.8,
+   "end": 139.05,
+   "music": -3,
+   "sync": true
+  }
+ ],
+ "caption": "Inputs every day. The return comes 💯 #JulianoMassarelli #motivation #entrepreneur #sales #mindset"
+}

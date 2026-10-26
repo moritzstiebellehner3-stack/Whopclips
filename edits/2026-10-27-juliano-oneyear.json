@@ -1,0 +1,32 @@
+{
+ "out": "output/2026-10-27/juliano/tiktok.mp4",
+ "style": "juliano",
+ "title": "What 1 year can do 😤💸",
+ "music": "never-going-broke",
+ "big": [
+  "RM",
+  "bling",
+  "possible",
+  "year"
+ ],
+ "parts": [
+  {
+   "src": "work/material/YOUR LIFE CAN CHANGE IN 1 YEAR.mp4",
+   "start": 25.15,
+   "end": 30.7
+  },
+  {
+   "src": "work/material/YOUR LIFE CAN CHANGE IN 1 YEAR.mp4",
+   "start": 30.7,
+   "end": 33.4,
+   "music": -3,
+   "sync": true
+  },
+  {
+   "src": "work/material/YOUR LIFE CAN CHANGE IN 1 YEAR.mp4",
+   "start": 33.55,
+   "end": 44.35
+  }
+ ],
+ "caption": "A year ago I started this journey 😤💸 #JulianoMassarelli #motivation #entrepreneur #sales #mindset"
+}

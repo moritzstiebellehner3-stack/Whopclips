@@ -1,0 +1,82 @@
+{
+ "out": "output/2026-10-27/juliano/youtube.mp4",
+ "style": "juliano",
+ "frame": [
+  1080,
+  780,
+  560
+ ],
+ "title": "Real cold call 📞🔥",
+ "music": "hip-hop-03",
+ "big": [
+  "broker",
+  "good",
+  "Hey"
+ ],
+ "parts": [
+  {
+   "src": "work/sources/juliano/7696523538664131871.mp4",
+   "start": 1.1,
+   "end": 3.45,
+   "box": [
+    83,
+    600,
+    807,
+    585
+   ],
+   "music": "full",
+   "voice": false,
+   "subs": false
+  },
+  {
+   "src": "work/sources/juliano/7696523538664131871.mp4",
+   "start": 3.45,
+   "end": 10.65,
+   "box": [
+    83,
+    600,
+    807,
+    585
+   ],
+   "music": "off"
+  },
+  {
+   "src": "work/sources/juliano/7696523538664131871.mp4",
+   "start": 16.85,
+   "end": 20.3,
+   "box": [
+    83,
+    600,
+    807,
+    585
+   ],
+   "music": "off"
+  },
+  {
+   "src": "work/sources/juliano/7696523538664131871.mp4",
+   "start": 85.3,
+   "end": 92.4,
+   "box": [
+    83,
+    600,
+    807,
+    585
+   ],
+   "music": "off"
+  },
+  {
+   "src": "work/sources/juliano/7696523538664131871.mp4",
+   "start": 92.4,
+   "end": 96.4,
+   "box": [
+    83,
+    600,
+    807,
+    585
+   ],
+   "music": -4,
+   "sync": true
+  }
+ ],
+ "caption": "\"Would you say I'm good at what I do?\" 📞🔥 #JulianoMassarelli #coldcalling #sales #lifeinsurance #salesman"
+}

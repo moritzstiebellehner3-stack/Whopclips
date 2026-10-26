@@ -1,0 +1,54 @@
+{
+ "out": "output/2026-10-27/tjr/instagram.mp4",
+ "style": "tjr",
+ "frame": [
+  1080,
+  1080,
+  420
+ ],
+ "music": "trap",
+ "under_db": -17,
+ "parts": [
+  {
+   "src": "work/material/Give Me 93 Seconds And I'll Make You Dangerously Motivated.mp4",
+   "start": 42.85,
+   "end": 60.1
+  },
+  {
+   "beats": 4,
+   "edit": [
+    {
+     "src": "work/sources/tjr_edit/clip_01HSYKMQQ4WDEBNDBYNVG680BG.mp4",
+     "start": 12.6
+    },
+    {
+     "src": "work/sources/tjr/clip_01M3DDYS5Z064P9DSFCYR5TVQ7.mp4",
+     "start": 16.0,
+     "box": [
+      60,
+      0,
+      1100,
+      775
+     ]
+    },
+    {
+     "src": "work/sources/tjr/clip_01M3Y9NJRMNANKR2AWAWXXJBEB.mp4",
+     "start": 6.5,
+     "cx": 0.5
+    },
+    {
+     "src": "work/sources/tjr/clip_01M3HBTYVSSVX79TRRHYTQ98QV.mp4",
+     "start": 27.6,
+     "box": [
+      0,
+      120,
+      1920,
+      960
+     ],
+     "beats": 6
+    }
+   ]
+  }
+ ],
+ "caption": "@TJR Relentless action.😤🔥 #TJR #mentality #tjrtrades #daytrading #edit"
+}
