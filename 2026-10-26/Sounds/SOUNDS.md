@@ -1,0 +1,41 @@
+# Sounds für TJR- und Juliano-Edits
+
+Ausgewertet am 25.10.2026: Welche Sounds nutzen die erfolgreichen Clip-Accounts wirklich? Grundlage sind @.tjr.him, @tjr.clips02, @tjrbuilt, @tjr.clips.core und Julianos eigenes @thewolfofinsurance, gelesen über die offiziellen TikTok-Videodaten.
+
+## So benutzt du sie
+
+- **In der App auswählen, nicht herunterladen.** Diese Sounds haben Copyright. Wählst du sie beim Posten in TikTok, Instagram oder YouTube aus, sind sie lizenziert, und der Clip hängt sich an den Trend, was oft extra Reichweite bringt. Eingebrannt im Video werden sie stummgeschaltet.
+- **Link öffnen** (am Handy öffnet er die TikTok-App), dann **„Diesen Sound verwenden“** antippen. Bei Instagram und YouTube den Namen in der Musik-Suche eingeben.
+- **Spricht TJR oder Juliano im Clip:** Sound auf **5–15 %**. Bei reinen B-Roll-/Auto-Edits auf volle Lautstärke.
+- **Bei Julianos „Real sales call“-Clips** am besten gar keinen Sound. Seine viralen Videos (38,8M / 22,3M / 8,8M) laufen nur mit Originalton.
+
+## Top 10 bei TJR-/Juliano-Clip-Accounts
+
+| # | Sound | Von | Passt für | Wo gesehen (Aufrufe) | Sound-Link | Beispiel-Video |
+|---|---|---|---|---|---|---|
+| 1 | Beat (originalljud) | Shayd3s.beats | Hype, Geld-Momente | @.tjr.him (605K) | https://www.tiktok.com/music/x-7663560380744207106 | https://www.tiktok.com/@.tjr.him/video/7685391036687961362 |
+| 2 | ski slopes | Lex Amarni | ruhig, Lifestyle, Mindset | @.tjr.him, 2× (522K) | https://www.tiktok.com/music/x-7568460350214080528 | https://www.tiktok.com/@.tjr.him/video/7683156886593539346 |
+| 3 | LEGACY (main) | PIXY | Motivation, Drop | @.tjr.him, @tjr.clips02, @tjr.clips.core (515K) | https://www.tiktok.com/music/x-7593320615478659073 | https://www.tiktok.com/@.tjr.him/video/7688793435834191156 |
+| 4 | Original-Sound „✞“ | ✞ | Mindset-/Motivations-Edits | @tjrbuilt, 11× (406K) | https://www.tiktok.com/music/x-7648598657821969185 | https://www.tiktok.com/@tjrbuilt/video/7694843402285894926 |
+| 5 | we found love slowed | callie..vsp | emotional, „Glow-up“ | @.tjr.him (246K) | https://www.tiktok.com/music/x-6832874046372268805 | https://www.tiktok.com/@.tjr.him/video/7683068292440804615 |
+| 6 | Original-Sound | soulflow | ruhig, Motivation | @tjrbuilt (215K) | https://www.tiktok.com/music/x-7452969922612808464 | https://www.tiktok.com/@tjrbuilt/video/7685094563026963726 |
+| 7 | son original | Lenny | Hype | @.tjr.him (181K) | https://www.tiktok.com/music/x-7533203654023645974 | https://www.tiktok.com/@.tjr.him/video/7683137105425485064 |
+| 8 | Original-Sound „RISE“ | RISE | „TJR Mentality.“-Clips | @tjr.clips.core, 3×, u. a. der 66K-Top-Clip | https://www.tiktok.com/music/x-7666989847780936456 | https://www.tiktok.com/@tjr.clips.core/video/7689824064608750851 |
+| 9 | sonido original | ElRolitas | Juliano Motivation („Win the day“) | @thewolfofinsurance (53K) | https://www.tiktok.com/music/x-7673034501618567944 | https://www.tiktok.com/@thewolfofinsurance/video/7698728692633160990 |
+| 10 | Original-Sound | ccsabathka. | Juliano Hype („Go GET it“) | @thewolfofinsurance (31K) | https://www.tiktok.com/music/x-7329374806707817262 | https://www.tiktok.com/@thewolfofinsurance/video/7699109760729222430 |
+
+**Bonus**, ebenfalls bei TJR-Clips im Einsatz:
+- **drowning (edit)** von Antent & vowl.: https://www.tiktok.com/music/x-7244550744096311298
+- **Asleep In Space** von Zachariehs: https://www.tiktok.com/music/x-7450026018947762192
+- **ominous (slowed + reverb)** von insensible: https://www.tiktok.com/music/x-7520047082217113616
+- **Latch vs. Show Me Love** von Chris Watson (bei Juliano): https://www.tiktok.com/music/x-7419355478188788513
+
+Hinweis: „Original-Sound“ heißt, ein Nutzer hat den Sound hochgeladen, oft ein Remix oder Ausschnitt eines Songs. Hör ihn dir vor dem Benutzen kurz an. Bei Sounds mit Songtext auf den Text achten.
+
+## Die MP3s in diesem Ordner (für CapCut)
+
+Die Dateien `01_…mp3` bis `10_…mp3` sind **lizenzfreie** Tracks von Mixkit, kostenlos und ohne Namensnennung. Sie sind für Edits, die du in CapCut baust.
+- Jeder ist auf die stärksten 28 Sekunden geschnitten.
+- **Der Drop kommt nach etwa 4 Sekunden.**
+- Alle haben dieselbe Lautstärke.
+- Die Zahl vor „BPM“ im Dateinamen ist das Tempo: Bei 150 BPM kannst du alle 0,4 s schneiden, bei 100 BPM alle 0,6 s.
