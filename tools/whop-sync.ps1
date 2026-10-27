@@ -180,10 +180,10 @@ function Push-Material {
     }
 }
 
-if ($Install) {
-    if ($PSCommandPath -and ($PSCommandPath -ne $Self)) { Copy-Item $PSCommandPath $Self -Force }
-    $action = New-ScheduledTaskAction -Execute 'powershell.exe' `
-        -Argument "-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$Self`""
+function Register-SyncTask {
+    # conhost --headless: kein Konsolenfenster (powershell -WindowStyle Hidden blitzt trotzdem kurz auf)
+    $action = New-ScheduledTaskAction -Execute 'conhost.exe' `
+        -Argument "--headless powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File `"$Self`""
     $every = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) -RepetitionInterval (New-TimeSpan -Minutes 30)
     $settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries `
         -ExecutionTimeLimit (New-TimeSpan -Hours 3)
@@ -197,8 +197,19 @@ if ($Install) {
         Register-ScheduledTask -TaskName $TaskName -Action $action -Trigger $every -Settings $settings `
             -Description $desc -Force | Out-Null
     }
+}
+
+if ($Install) {
+    if ($PSCommandPath -and ($PSCommandPath -ne $Self)) { Copy-Item $PSCommandPath $Self -Force }
+    Register-SyncTask
     Write-Host "Eingerichtet: Aufgabe '$TaskName'. Clips landen in $Target"
     Write-Log 'Aufgabe eingerichtet'
+} else {
+    # Alte Einrichtung (powershell.exe direkt, Fenster blitzt auf) einmalig auf die fensterlose Variante umstellen
+    try {
+        $task = Get-ScheduledTask -TaskName $TaskName -ErrorAction Stop
+        if ($task.Actions[0].Execute -ne 'conhost.exe') { Register-SyncTask; Write-Log 'Aufgabe auf fensterlosen Start umgestellt' }
+    } catch { Write-Log "Aufgabe konnte nicht umgestellt werden: $_" }
 }
 
 if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
