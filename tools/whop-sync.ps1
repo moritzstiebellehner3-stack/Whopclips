@@ -157,11 +157,15 @@ function Push-BigFiles($g, $bigs, $push) {
 
 function Push-Material {
     # Git arbeitet direkt auf Material\ (core.worktree), liest dort aber nur: kein checkout, kein reset --hard, kein clean.
-    if ((Test-Path $Lock) -and (((Get-Date) - (Get-Item $Lock).LastWriteTime).TotalHours -lt 3)) {
-        Write-Log 'Material: Upload läuft schon in einem anderen Fenster, übersprungen'
-        return 0
+    if (Test-Path $Lock) {
+        # Sperre nur beachten, wenn der Prozess, der sie gesetzt hat, wirklich noch läuft (sonst: abgebrochener Lauf)
+        $owner = (Get-Content $Lock -ErrorAction SilentlyContinue | Select-Object -First 1) -as [int]
+        if ($owner -and $owner -ne $PID -and (Get-Process -Id $owner -ErrorAction SilentlyContinue)) {
+            Write-Step "Material: Upload läuft schon im Hintergrund (Prozess $owner), hier übersprungen"
+            return 0
+        }
     }
-    Set-Content -Path $Lock -Value (Get-Date)
+    Set-Content -Path $Lock -Value $PID
     try {
         if (Test-Path $OldCopy) { Remove-Item $OldCopy -Recurse -Force; Write-Log 'alte Material-Kopie entfernt' }
         $g = "--git-dir=$MaterialGit"
