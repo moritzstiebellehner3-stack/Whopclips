@@ -1,0 +1,32 @@
+{
+ "out": "output/2026-10-28/juliano/youtube.mp4",
+ "style": "juliano",
+ "title": "Chase the skill, not the money 💰",
+ "music": "hip-hop-03",
+ "big": [
+  "skills",
+  "skill",
+  "money",
+  "sales"
+ ],
+ "parts": [
+  {
+   "src": "work/material/YOUR LIFE CAN CHANGE IN 1 YEAR.mp4",
+   "start": 225.2,
+   "end": 229.85
+  },
+  {
+   "src": "work/material/YOUR LIFE CAN CHANGE IN 1 YEAR.mp4",
+   "start": 259.7,
+   "end": 264.4
+  },
+  {
+   "src": "work/material/YOUR LIFE CAN CHANGE IN 1 YEAR.mp4",
+   "start": 264.4,
+   "end": 272.1,
+   "music": -3,
+   "sync": true
+  }
+ ],
+ "caption": "Obsess over the skill, the money follows 💰 #JulianoMassarelli #motivation #entrepreneur #sales #mindset"
+}

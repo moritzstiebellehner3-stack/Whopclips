@@ -1,0 +1,60 @@
+{
+ "out": "output/2026-10-28/tjr/tiktok.mp4",
+ "style": "tjr",
+ "frame": [
+  1080,
+  608,
+  656
+ ],
+ "music": "trap",
+ "under_db": -17,
+ "parts": [
+  {
+   "src": "work/sources/tjr_new/clip_01M5Y6ZGC64EH5WKHM82KHZD5G.mp4",
+   "start": 4.55,
+   "end": 10.45,
+   "box": [
+    0,
+    750,
+    588,
+    330
+   ]
+  },
+  {
+   "src": "work/sources/tjr_new/clip_01M5Y6ZGC64EH5WKHM82KHZD5G.mp4",
+   "start": 32.05,
+   "end": 49.85,
+   "box": [
+    0,
+    750,
+    588,
+    330
+   ]
+  },
+  {
+   "beats": 4,
+   "edit": [
+    {
+     "src": "work/sources/tjr_edit/clip_01HSYKMQQ4WDEBNDBYNVG680BG.mp4",
+     "start": 22.0
+    },
+    {
+     "src": "work/sources/tjr/clip_01M3Y9NJRMNANKR2AWAWXXJBEB.mp4",
+     "start": 4.2,
+     "cx": 0.55
+    },
+    {
+     "src": "work/sources/tjr/clip_01M3HBTYVSSVX79TRRHYTQ98QV.mp4",
+     "start": 25.2,
+     "box": [
+      0,
+      120,
+      1920,
+      960
+     ]
+    }
+   ]
+  }
+ ],
+ "caption": "@TJR Drake didn't expect this.😭🦉 #TJR #mentality #tjrtrades #daytrading #edit"
+}

@@ -1,0 +1,27 @@
+{
+ "out": "output/2026-10-28/juliano/tiktok.mp4",
+ "style": "juliano",
+ "title": "You're the main character 🎬🔥",
+ "music": "never-going-broke",
+ "big": [
+  "author",
+  "character",
+  "crazy",
+  "turnt"
+ ],
+ "parts": [
+  {
+   "src": "work/material/YOUR LIFE CAN CHANGE IN 1 YEAR.mp4",
+   "start": 171.2,
+   "end": 184.25
+  },
+  {
+   "src": "work/material/YOUR LIFE CAN CHANGE IN 1 YEAR.mp4",
+   "start": 184.25,
+   "end": 193.6,
+   "music": -3,
+   "sync": true
+  }
+ ],
+ "caption": "Create the life you want 🎬🔥 #JulianoMassarelli #motivation #entrepreneur #sales #mindset"
+}

@@ -1,0 +1,27 @@
+{
+ "out": "output/2026-10-28/juliano/instagram.mp4",
+ "style": "juliano",
+ "title": "A year ago I was just like you 🫵",
+ "music": "trapanomics",
+ "big": [
+  "human",
+  "year",
+  "snap",
+  "life"
+ ],
+ "parts": [
+  {
+   "src": "work/material/YOUR LIFE CAN CHANGE IN 1 YEAR.mp4",
+   "start": 203.2,
+   "end": 220.55
+  },
+  {
+   "src": "work/material/YOUR LIFE CAN CHANGE IN 1 YEAR.mp4",
+   "start": 220.55,
+   "end": 224.95,
+   "music": -3,
+   "sync": true
+  }
+ ],
+ "caption": "We got one life. Take action now 🫵 #JulianoMassarelli #motivation #entrepreneur #sales #mindset"
+}

@@ -1,0 +1,68 @@
+{
+ "out": "output/2026-10-28/tjr/youtube.mp4",
+ "style": "tjr",
+ "frame": [
+  1080,
+  760,
+  580
+ ],
+ "music": "thunder",
+ "drop": 62,
+ "under_db": -17,
+ "fix": {
+  "20": "20,000",
+  ",000": ""
+ },
+ "parts": [
+  {
+   "src": "work/sources/tjr_vod/vod131052820_3988-4038_1080p60.mp4",
+   "start": 9.15,
+   "end": 27.4,
+   "box": [
+    0,
+    700,
+    684,
+    380
+   ],
+   "cx": 0.4
+  },
+  {
+   "src": "work/sources/tjr_vod/vod131052820_3988-4038_1080p60.mp4",
+   "start": 37.6,
+   "end": 41.5,
+   "box": [
+    0,
+    700,
+    684,
+    380
+   ],
+   "cx": 0.4
+  },
+  {
+   "beats": 2,
+   "edit": [
+    {
+     "src": "work/sources/tjr/clip_01M3Y9NJRMNANKR2AWAWXXJBEB.mp4",
+     "start": 5.0,
+     "cx": 0.5
+    },
+    {
+     "src": "work/sources/tjr/clip_01M3HBTYVSSVX79TRRHYTQ98QV.mp4",
+     "start": 26.0,
+     "box": [
+      0,
+      120,
+      1920,
+      960
+     ]
+    },
+    {
+     "src": "work/sources/tjr_edit/clip_01HSYKMQQ4WDEBNDBYNVG680BG.mp4",
+     "start": 21.0,
+     "beats": 4
+    }
+   ]
+  }
+ ],
+ "caption": "@TJR Performing in front of a stadium.🏟️🔥 #TJR #mentality #tjrtrades #daytrading #edit"
+}
