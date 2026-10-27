@@ -1,0 +1,61 @@
+{
+ "out": "output/2026-10-29/tjr/youtube.mp4",
+ "style": "tjr",
+ "frame": [
+  1080,
+  608,
+  656
+ ],
+ "music": "thunder",
+ "drop": 62,
+ "under_db": -17,
+ "parts": [
+  {
+   "src": "work/sources/tjr_new/clip_01M5Y6ZGC64EH5WKHM82KHZD5G.mp4",
+   "start": 11.15,
+   "end": 31.6,
+   "box": [
+    0,
+    750,
+    588,
+    330
+   ]
+  },
+  {
+   "beats": 2,
+   "edit": [
+    {
+     "src": "work/sources/tjr_edit/clip_01HSYKMQQ4WDEBNDBYNVG680BG.mp4",
+     "start": 16.5
+    },
+    {
+     "src": "work/sources/tjr/clip_01M3Y9NJRMNANKR2AWAWXXJBEB.mp4",
+     "start": 26.5,
+     "cx": 0.5
+    },
+    {
+     "src": "work/sources/tjr/clip_01M3HBTYVSSVX79TRRHYTQ98QV.mp4",
+     "start": 16.0,
+     "box": [
+      0,
+      120,
+      1920,
+      960
+     ]
+    },
+    {
+     "src": "work/sources/tjr/clip_01M3DDYS5Z064P9DSFCYR5TVQ7.mp4",
+     "start": 23.5,
+     "box": [
+      60,
+      0,
+      1100,
+      775
+     ],
+     "beats": 4
+    }
+   ]
+  }
+ ],
+ "caption": "@TJR The first time he met Drake.🦉🎂 #TJR #mentality #tjrtrades #daytrading #edit"
+}

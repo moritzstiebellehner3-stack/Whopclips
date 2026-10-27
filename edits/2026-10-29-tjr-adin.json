@@ -1,0 +1,55 @@
+{
+ "out": "output/2026-10-29/tjr/instagram.mp4",
+ "style": "tjr",
+ "frame": [
+  1080,
+  760,
+  580
+ ],
+ "music": "sparta",
+ "under_db": -17,
+ "fix": {
+  "Aiden": "Adin"
+ },
+ "parts": [
+  {
+   "src": "work/sources/tjr_vod/vod129873106_4976-5126_1080p60.mp4",
+   "start": 119.4,
+   "end": 142.2,
+   "box": [
+    0,
+    700,
+    684,
+    380
+   ],
+   "cx": 0.17
+  },
+  {
+   "beats": 2,
+   "edit": [
+    {
+     "src": "work/sources/tjr/clip_01M3Y9NJRMNANKR2AWAWXXJBEB.mp4",
+     "start": 10.5,
+     "cx": 0.5
+    },
+    {
+     "src": "work/sources/tjr/clip_01M3Y9NJRMNANKR2AWAWXXJBEB.mp4",
+     "start": 22.0,
+     "cx": 0.5
+    },
+    {
+     "src": "work/sources/tjr/clip_01M3HBTYVSSVX79TRRHYTQ98QV.mp4",
+     "start": 17.5,
+     "box": [
+      0,
+      120,
+      1920,
+      960
+     ],
+     "beats": 4
+    }
+   ]
+  }
+ ],
+ "caption": "@TJR on Adin Ross.🫶🔥 #TJR #mentality #tjrtrades #daytrading #edit"
+}

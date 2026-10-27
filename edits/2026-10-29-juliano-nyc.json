@@ -1,0 +1,30 @@
+{
+ "out": "output/2026-10-29/juliano/instagram.mp4",
+ "style": "juliano",
+ "title": "Paid $25K for one day in NYC 🗽💸",
+ "music": "trapanomics",
+ "big": [
+  "broke",
+  "zero",
+  "delusional",
+  "win"
+ ],
+ "fix": {
+  "Richard": "richer"
+ },
+ "parts": [
+  {
+   "src": "work/material/I Got Paid $25,000 to Go to New York City.mp4",
+   "start": 1066.9,
+   "end": 1090.6
+  },
+  {
+   "src": "work/material/I Got Paid $25,000 to Go to New York City.mp4",
+   "start": 1090.6,
+   "end": 1092.6,
+   "music": -3,
+   "sync": true
+  }
+ ],
+ "caption": "You're delusional until it works 🗽💸 #JulianoMassarelli #motivation #entrepreneur #sales #mindset"
+}

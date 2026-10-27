@@ -474,5 +474,137 @@
    "start": 21.0,
    "end": 23.51
   }
+ ],
+ "output/2026-10-29/tjr/instagram.mp4": [
+  {
+   "src": "work/sources/tjr_vod/vod129873106_4976-5126_1080p60.mp4",
+   "start": 119.4,
+   "end": 142.2
+  },
+  {
+   "src": "work/sources/tjr/clip_01M3Y9NJRMNANKR2AWAWXXJBEB.mp4",
+   "start": 10.5,
+   "end": 11.48
+  },
+  {
+   "src": "work/sources/tjr/clip_01M3Y9NJRMNANKR2AWAWXXJBEB.mp4",
+   "start": 22.0,
+   "end": 22.98
+  },
+  {
+   "src": "work/sources/tjr/clip_01M3HBTYVSSVX79TRRHYTQ98QV.mp4",
+   "start": 17.5,
+   "end": 19.45
+  }
+ ],
+ "output/2026-10-29/tjr/youtube.mp4": [
+  {
+   "src": "work/sources/tjr_new/clip_01M5Y6ZGC64EH5WKHM82KHZD5G.mp4",
+   "start": 11.15,
+   "end": 31.6
+  },
+  {
+   "src": "work/sources/tjr_edit/clip_01HSYKMQQ4WDEBNDBYNVG680BG.mp4",
+   "start": 16.5,
+   "end": 17.75
+  },
+  {
+   "src": "work/sources/tjr/clip_01M3Y9NJRMNANKR2AWAWXXJBEB.mp4",
+   "start": 26.5,
+   "end": 27.75
+  },
+  {
+   "src": "work/sources/tjr/clip_01M3HBTYVSSVX79TRRHYTQ98QV.mp4",
+   "start": 16.0,
+   "end": 17.25
+  },
+  {
+   "src": "work/sources/tjr/clip_01M3DDYS5Z064P9DSFCYR5TVQ7.mp4",
+   "start": 23.5,
+   "end": 26.01
+  }
+ ],
+ "output/2026-10-29/tjr/tiktok.mp4": [
+  {
+   "src": "work/sources/tjr_vod/vod129873106_4976-5126_1080p60.mp4",
+   "start": 21.5,
+   "end": 42.7
+  },
+  {
+   "src": "work/sources/tjr/clip_01M3Y9NJRMNANKR2AWAWXXJBEB.mp4",
+   "start": 15.0,
+   "end": 16.58
+  },
+  {
+   "src": "work/sources/tjr_edit/clip_01HSYKMQQ4WDEBNDBYNVG680BG.mp4",
+   "start": 9.0,
+   "end": 10.58
+  },
+  {
+   "src": "work/sources/tjr/clip_01M3HBTYVSSVX79TRRHYTQ98QV.mp4",
+   "start": 12.5,
+   "end": 14.87
+  }
+ ],
+ "output/2026-10-29/juliano/tiktok.mp4": [
+  {
+   "src": "work/material/I Spent $100,000 on a Watch….mp4",
+   "start": 664.0,
+   "end": 678.15
+  },
+  {
+   "src": "work/material/I Spent $100,000 on a Watch….mp4",
+   "start": 710.7,
+   "end": 715.65
+  },
+  {
+   "src": "work/material/I Spent $100,000 on a Watch….mp4",
+   "start": 715.65,
+   "end": 719.4
+  }
+ ],
+ "output/2026-10-29/juliano/instagram.mp4": [
+  {
+   "src": "work/material/I Got Paid $25,000 to Go to New York City.mp4",
+   "start": 1066.9,
+   "end": 1090.6
+  },
+  {
+   "src": "work/material/I Got Paid $25,000 to Go to New York City.mp4",
+   "start": 1090.6,
+   "end": 1092.6
+  }
+ ],
+ "output/2026-10-29/juliano/youtube.mp4": [
+  {
+   "src": "work/material/I Snuck Into Alex Eubank’s Wedding….mp4",
+   "start": 391.4,
+   "end": 403.6
+  },
+  {
+   "src": "work/material/I Snuck Into Alex Eubank’s Wedding….mp4",
+   "start": 816.7,
+   "end": 825.1
+  },
+  {
+   "src": "work/material/I Snuck Into Alex Eubank’s Wedding….mp4",
+   "start": 525.0,
+   "end": 525.88
+  },
+  {
+   "src": "work/material/I Snuck Into Alex Eubank’s Wedding….mp4",
+   "start": 535.0,
+   "end": 535.88
+  },
+  {
+   "src": "work/material/I Snuck Into Alex Eubank’s Wedding….mp4",
+   "start": 728.0,
+   "end": 728.88
+  },
+  {
+   "src": "work/material/I Snuck Into Alex Eubank’s Wedding….mp4",
+   "start": 255.0,
+   "end": 256.76
+  }
  ]
 }

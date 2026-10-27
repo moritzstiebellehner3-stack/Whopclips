@@ -1,0 +1,35 @@
+{
+ "out": "output/2026-10-29/juliano/tiktok.mp4",
+ "style": "juliano",
+ "title": "$600K in one month 🔥📞",
+ "music": "basketball",
+ "drop": 58,
+ "big": [
+  "$600",
+  "boss",
+  "million"
+ ],
+ "fix": {
+  ",000": "K"
+ },
+ "parts": [
+  {
+   "src": "work/material/I Spent $100,000 on a Watch….mp4",
+   "start": 664.0,
+   "end": 678.15
+  },
+  {
+   "src": "work/material/I Spent $100,000 on a Watch….mp4",
+   "start": 710.7,
+   "end": 715.65
+  },
+  {
+   "src": "work/material/I Spent $100,000 on a Watch….mp4",
+   "start": 715.65,
+   "end": 719.4,
+   "music": -3,
+   "sync": true
+  }
+ ],
+ "caption": "Next stop: a million a month 🔥 #JulianoMassarelli #sales #lifeinsurance #entrepreneur #teamwork"
+}
