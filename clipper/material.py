@@ -3,7 +3,8 @@
     python -m clipper.material               # holen und auflisten (neu = noch kein Transkript)
     python -m clipper.material --transcribe  # dazu alle neuen Videos transkribieren
 
-Der PC-Task „Whop-Clips holen“ (`tools/whop-sync.ps1`) lädt den Ordner alle 30 Minuten hoch (Dateien bis 95 MB).
+Der PC-Task „Whop-Clips holen“ (`tools/whop-sync.ps1`) lädt den Ordner alle 30 Minuten hoch; Videos über 95 MB
+kommen in Teilen (`_teile/<Name>.partNNN`) und werden hier wieder zusammengesetzt.
 Das Repo `moritzstiebellehner3-stack/Whop-Material` muss zur Session hinzugefügt sein (privat).
 """
 import argparse
@@ -18,6 +19,23 @@ MEDIA = {".mp4", ".mov", ".m4v", ".webm", ".mkv", ".mp3", ".m4a", ".wav"}
 
 def git(*args, cwd=None):
     subprocess.run(["git", *args], cwd=cwd, check=True)
+
+
+def assemble() -> None:
+    """Große Videos kommen vom PC als _teile/<Name>.part001, .part002 … (GitHub-Grenze 100 MB pro Datei)."""
+    groups = {}
+    for part in sorted((OUT / "_teile").rglob("*.part[0-9][0-9][0-9]")):
+        groups.setdefault(part.relative_to(OUT / "_teile").with_suffix(""), []).append(part)
+    for rel, parts in groups.items():
+        target = OUT / rel
+        size = sum(p.stat().st_size for p in parts)
+        if target.exists() and target.stat().st_size == size:
+            continue
+        target.parent.mkdir(parents=True, exist_ok=True)
+        with target.open("wb") as out:
+            for p in parts:
+                out.write(p.read_bytes())
+        print(f"zusammengesetzt: {rel} ({len(parts)} Teile)")
 
 
 def fetch() -> None:
@@ -35,6 +53,7 @@ if __name__ == "__main__":
     p.add_argument("--transcribe", action="store_true")
     a = p.parse_args()
     fetch()
+    assemble()
     for f in sorted(x for x in OUT.rglob("*") if x.suffix.lower() in MEDIA and ".git" not in x.parts):
         done = f.with_suffix(".words.json").exists()
         if a.transcribe and not done:

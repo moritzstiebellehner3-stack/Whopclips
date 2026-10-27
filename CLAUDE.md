@@ -11,6 +11,7 @@ Whopclips produziert Clips für Whop-/Reach-Clipping-Kampagnen, aktuell **TJR** 
   - Pflicht-Hashtag
   - nur offizielle Quellen
 - Ablauf: Material holen → `python -m clipper.transcribe` → Momente aussuchen → `plans/<datum>.json` → `python -m clipper.batch plans/<datum>.json`. Details stehen in `README.md`.
+- **Abwechslung:** Kein Moment und kein Edit-Schnitt zweimal. `campaigns/used.json` merkt sich alle benutzten Ausschnitte, `clipper.realtalk` warnt bei Überschneidung. Pro Set mindestens 2 verschiedene Quellen pro Kampagne, Material aus Moritz' Ordner zuerst, dazu verschiedene Kick-Streams (Anfang und Ende).
 - **Alle Clips 15–30 Sekunden**, nie länger. Musik läuft immer unter der Stimme. Neue Formate nach Moritz' 5 Vorlagen vom 25.10. (Details in `docs/strategie.md`, Renderer `python -m clipper.realtalk edits/<datum>-<kampagne>-<thema>.json`).
 - **TJR = „Real Talk“** (`style: "tjr"`):
   - TJR redet einfach (Mindset, Ansagen, Respekt, Haters). **Kein Trading-Erklären, keine Charts, kein Hook.**
@@ -30,7 +31,7 @@ Whopclips produziert Clips für Whop-/Reach-Clipping-Kampagnen, aktuell **TJR** 
   - **TikTok nicht per `--impersonate` laden.** Das umgeht den Bot-Schutz, und Moritz will das nicht.
   - `python -m clipper.tiktok list/get` nutzt das offizielle Embed. Gut für Analyse und Video-Listen, **aber die Videos haben das TikTok-Wasserzeichen** und sind damit als Clip-Quelle tabu (keine Logos).
   - Juliano-Quellen ohne Wasserzeichen: Moritz lädt sie per ssstik und legt sie bereit, oder sie kommen von seinem PC aus über YouTube @Julianomass.
-  - **Moritz' Material (TJR und Juliano) zuerst nutzen:** Er legt es in `Videos\Whop-Campaign\Material` auf seinem PC. Der Task „Whop-Clips holen“ lädt es in das private Repo `moritzstiebellehner3-stack/Whop-Material`. In der Session: Repo hinzufügen, dann `python -m clipper.material --transcribe` (landet in `work/material/`).
+  - **Moritz' Material (TJR und Juliano) zuerst nutzen:** Er legt es in `Videos\Whop-Campaign\Material` auf seinem PC. Der Task „Whop-Clips holen“ lädt es in das private Repo `moritzstiebellehner3-stack/Whop-Material`. Videos über 95 MB kommen in Teilen und werden zusammengesetzt. In der Session: Repo hinzufügen, dann `python -m clipper.material --transcribe` (landet in `work/material/`).
 - **Luxus-B-Roll** (Autos, Uhren, Penthouse; für Moritz' eigene Edits): `python -m clipper.broll edits/<datum>-broll.json`.
   - 9:16, ohne Text, ohne Musik, ohne Ton.
   - Landet über `publish` in `<Datum>/Luxus-B-Roll/`.

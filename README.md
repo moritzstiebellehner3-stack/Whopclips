@@ -55,7 +55,7 @@ python -m clipper.realtalk edits/2026-10-26-tjr-idareyou.json
    ```
    Das legt den Aufgabenplaner-Task „Whop-Clips holen“ an (bei Anmeldung + alle 30 min). Er kopiert neue Tage nach `Videos\Whop-Campaign` und zeigt eine Benachrichtigung. Er löscht nichts, und selbst gelöschte Tage kommen nicht zurück. Das Protokoll liegt in `%LOCALAPPDATA%\whop-sync\sync.log`.
 3. **Material vom PC in die Cloud:** Alles, was Moritz in `Videos\Whop-Campaign\Material` legt, lädt derselbe Task in das private Repo `moritzstiebellehner3-stack/Whop-Material` hoch.
-   - Dateien bis 95 MB, größere stehen im Protokoll.
+   - Videos über 95 MB gehen in Teilen zu 90 MB hoch (`_teile/`), `clipper.material` setzt sie wieder zusammen.
    - Hochgeladen wird in Paketen bis 400 MB (GitHub nimmt höchstens 2 GB pro Push). Fertige Pakete bleiben oben, ein abgebrochener Lauf macht beim nächsten Mal weiter.
    - Git liest den Ordner nur (eigener Git-Ordner `%LOCALAPPDATA%\whop-sync\material.git`, keine Kopie der Dateien).
    - Beim Ausführen der Zeile zeigt das Fenster den Fortschritt: Anmeldung, Dateien/MB, Paket x/y mit Prozent.

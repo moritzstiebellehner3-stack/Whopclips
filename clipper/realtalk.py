@@ -41,6 +41,7 @@ from clipper.edit import analyse
 from clipper.render import H, W, censor, chunk_words
 
 FPS = 30
+USED = ROOT / "campaigns" / "used.json"  # welche Quelle/Sekunden schon in welchem Clip waren
 FONTS = {
     "DMSerifDisplay": "https://fonts.gstatic.com/s/dmserifdisplay/v17/-nFnOHM81r4j6k0gjAW3mujVU2B2K_c.ttf",
     "Montserrat-ExtraBold": "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvr70w-.ttf",
@@ -245,6 +246,34 @@ def gain(level, under_db: float) -> float:
     return 10 ** (db / 20)
 
 
+def ranges(plan: dict, period: float) -> list[dict]:
+    """Alle benutzten Ausschnitte eines Plans: Sprech-Teile und Edit-Schnitte (Länge aus dem Beat)."""
+    out = []
+    for s in plan["parts"]:
+        if "edit" in s:
+            for shot in s["edit"]:
+                d = shot.get("beats", s.get("beats", 2)) * period
+                out.append({"src": shot["src"], "start": shot["start"], "end": round(shot["start"] + d, 2)})
+        else:
+            out.append({"src": s["src"], "start": s["start"], "end": s["end"]})
+    return out
+
+
+def check_used(plan: dict, period: float) -> None:
+    """Warnt, wenn ein Ausschnitt schon in einem anderen Clip vorkam, und trägt die neuen ein."""
+    used = json.loads(USED.read_text()) if USED.exists() else {}
+    mine = ranges(plan, period)
+    for r in mine:
+        for other, rs in used.items():
+            if other == plan["out"]:
+                continue
+            for u in rs:
+                if u["src"] == r["src"] and u["start"] < r["end"] and r["start"] < u["end"]:
+                    print(f"WARNUNG: {r['src']} {r['start']:.1f}-{r['end']:.1f} s schon benutzt in {other}")
+    used[plan["out"]] = mine
+    USED.write_text(json.dumps(used, indent=1, ensure_ascii=False) + "\n")
+
+
 def build(plan_path: Path) -> None:
     plan = json.loads(plan_path.read_text())
     style = plan["style"]
@@ -257,6 +286,7 @@ def build(plan_path: Path) -> None:
 
     music = music_file(plan.get("music"))
     drop, period = analyse(music, plan.get("drop")) if music else (0.0, 0.5)
+    check_used(plan, period)
 
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)

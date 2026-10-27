@@ -30,6 +30,8 @@ $OldCopy      = Join-Path $Base 'material'       # Kopie der Vorversion, wird en
 $Lock         = Join-Path $Base 'material.lock'
 $MaxBytes  = 95MB
 $PackBytes = 400MB
+$ChunkBytes = 90MB                                 # große Videos gehen in Teilen zu 90 MB hoch
+$BigDone = Join-Path $Base 'big-done.txt'
 # im Hintergrund nie auf eine Anmeldung warten; beim Einrichten (-Install) darf sich das Login-Fenster öffnen
 if (-not $Install) { $env:GIT_TERMINAL_PROMPT = '0'; $env:GCM_INTERACTIVE = 'never' }
 try { [Console]::OutputEncoding = [Text.Encoding]::UTF8 } catch { }  # Dateinamen mit Umlauten aus git richtig lesen
@@ -88,6 +90,71 @@ function Show-Toast($text) {
     } catch { Write-Log "Benachrichtigung ging nicht: $_" }
 }
 
+function Push-BigFiles($g, $bigs, $push) {
+    # Videos über 95 MB (GitHub-Grenze 100 MB pro Datei) als Teile zu 90 MB: jeder Teil wird direkt in die
+    # Git-Datenbank geschrieben (_teile/<Name>.part001 ...), im Material-Ordner selbst entsteht nichts.
+    $done = @()
+    if (Test-Path $BigDone) { $done = @(Get-Content $BigDone -Encoding UTF8) }
+    $current = @{}
+    foreach ($f in $bigs) { $current[($f.FullName.Substring($MaterialDir.Length).TrimStart('\') -replace '\\', '/')] = $f }
+
+    # Teile von Videos, die Moritz gelöscht hat, wieder entfernen
+    $gone = 0
+    foreach ($part in @((Get-Git $g ls-files -z -- _teile) -join "`n" -split "`0" | Where-Object { $_ })) {
+        $rel = $part.Substring(7) -replace '\.part\d{3}$', ''
+        if (-not $current.ContainsKey($rel)) { Invoke-Git $g update-index --force-remove -- $part; $gone++ }
+    }
+    if ($gone -gt 0) {
+        Invoke-Git $g commit --quiet -m 'Material: Teile gelöschter Videos entfernt'
+        Invoke-GitLive $g @push
+        $done = @($done | Where-Object { $current.ContainsKey(($_ -split '\|')[0]) })
+        Set-Content -Path $BigDone -Value $done -Encoding UTF8
+    }
+
+    $tmp = Join-Path $Base 'teil.tmp'
+    $count = 0
+    foreach ($rel in $current.Keys) {
+        $f = $current[$rel]
+        $key = "$rel|$($f.Length)|$($f.LastWriteTimeUtc.Ticks)"
+        if ($done -contains $key) { continue }
+        $n = [int][Math]::Ceiling($f.Length / $ChunkBytes)
+        Write-Step "Großes Video in $n Teilen: $rel"
+        foreach ($old in @((Get-Git $g ls-files -z -- _teile) -join "`n" -split "`0" | Where-Object { $_ -and $_.StartsWith("_teile/$rel.part") })) {
+            Invoke-Git $g update-index --force-remove -- $old   # ältere Version derselben Datei
+        }
+        $in = [IO.File]::OpenRead($f.FullName)
+        try {
+            $buf = New-Object byte[] $ChunkBytes
+            for ($i = 1; $i -le $n; $i++) {
+                $read = 0
+                while ($read -lt $ChunkBytes) {
+                    $r = $in.Read($buf, $read, $ChunkBytes - $read)
+                    if ($r -le 0) { break }
+                    $read += $r
+                }
+                $out = [IO.File]::Create($tmp)
+                $out.Write($buf, 0, $read)
+                $out.Close()
+                $sha = @(Get-Git $g hash-object -w --no-filters -- $tmp)[0]
+                if (-not $sha) { throw "Teil $i von $rel konnte nicht gespeichert werden" }
+                Invoke-Git $g update-index --add --cacheinfo 100644 $sha ('_teile/{0}.part{1:D3}' -f $rel, $i)
+                if (($i % 4 -eq 0) -or ($i -eq $n)) {
+                    Invoke-Git $g commit --quiet -m "Material: $rel, Teil $i/$n"
+                    Write-Step "Lade Teil $i/$n hoch..."
+                    Invoke-GitLive $g @push
+                }
+            }
+        } finally {
+            $in.Close()
+            Remove-Item $tmp -Force -ErrorAction SilentlyContinue
+        }
+        Add-Content -Path $BigDone -Value $key -Encoding UTF8
+        Write-Step "Fertig hochgeladen: $rel"
+        $count++
+    }
+    return $count
+}
+
 function Push-Material {
     # Git arbeitet direkt auf Material\ (core.worktree), liest dort aber nur: kein checkout, kein reset --hard, kein clean.
     if ((Test-Path $Lock) -and (((Get-Date) - (Get-Item $Lock).LastWriteTime).TotalHours -lt 3)) {
@@ -117,10 +184,10 @@ function Push-Material {
 
         # Nicht hochladen: zu große Dateien, Systemdateien, halbfertige Downloads
         $exclude = @('desktop.ini', 'Thumbs.db', '*.tmp', '*.crdownload', '*.part', '~$*')
-        foreach ($big in Get-ChildItem $MaterialDir -Recurse -File | Where-Object { $_.Length -gt $MaxBytes }) {
+        $bigs = @(Get-ChildItem $MaterialDir -Recurse -File | Where-Object { $_.Length -gt $MaxBytes })
+        foreach ($big in $bigs) {
             $rel = $big.FullName.Substring($MaterialDir.Length).TrimStart('\') -replace '\\', '/'
             $exclude += '/' + ($rel -replace '([\[\]\*\?])', '\$1')
-            Write-Step "Zu groß (über 95 MB), wird nicht hochgeladen: $rel"
         }
         New-Item -ItemType Directory -Force -Path (Join-Path $MaterialGit 'info') | Out-Null
         [IO.File]::WriteAllText((Join-Path $MaterialGit 'info\exclude'), (($exclude -join "`n") + "`n"),
@@ -146,12 +213,18 @@ function Push-Material {
         $items = @()
         foreach ($entry in ($raw -split "`0" | Where-Object { $_.Length -gt 3 })) {
             $path = $entry.Substring(3)
+            if ($path.StartsWith('_teile/')) { continue }  # Teile großer Videos laufen über Push-BigFiles
             $full = Join-Path $MaterialDir ($path -replace '/', '\')
             $size = 0
             if (Test-Path -LiteralPath $full) { $size = (Get-Item -LiteralPath $full -Force).Length }
             $items += [pscustomobject]@{ Path = $path; Size = $size }
         }
-        if ($items.Count -eq 0) { Write-Step 'Material: nichts Neues'; return 0 }
+        $push = @('push', '-u', 'origin', 'main')
+        if ($Install) { $push += '--progress' } else { $push += '--quiet' }
+        if ($items.Count -eq 0) {
+            Write-Step 'Material: keine neuen kleinen Dateien'
+            return (Push-BigFiles $g $bigs $push)
+        }
 
         $packs = @(); $cur = @(); $sum = 0
         foreach ($it in $items) {
@@ -163,8 +236,6 @@ function Push-Material {
         Write-Step "Material: $($items.Count) Dateien, $mb MB, in $($packs.Count) Paket(en)"
 
         $list = Join-Path $Base 'material-pack.txt'
-        $push = @('push', '-u', 'origin', 'main')
-        if ($Install) { $push += '--progress' } else { $push += '--quiet' }
         for ($i = 0; $i -lt $packs.Count; $i++) {
             $n = "$($i + 1)/$($packs.Count)"
             [IO.File]::WriteAllText($list, (($packs[$i] -join "`0") + "`0"), (New-Object Text.UTF8Encoding $false))
@@ -174,7 +245,7 @@ function Push-Material {
             Invoke-GitLive $g @push
             Write-Step "Paket $n hochgeladen"
         }
-        return $items.Count
+        return $items.Count + (Push-BigFiles $g $bigs $push)
     } finally {
         Remove-Item $Lock -Force -ErrorAction SilentlyContinue
     }
