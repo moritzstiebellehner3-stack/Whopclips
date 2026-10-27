@@ -208,11 +208,18 @@ if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
 
 try {
     Write-Step 'Hole fertige Clips (beim ersten Mal kann das ein paar Minuten dauern)...'
-    if (-not (Test-Path (Join-Path $Clone '.git'))) {
+    try {
+        if (-not (Test-Path (Join-Path $Clone '.git'))) {
+            Invoke-Git clone --quiet --depth 1 --branch videos --single-branch $Repo $Clone
+        } else {
+            Invoke-Git -C $Clone fetch --quiet --depth 1 origin videos
+            Invoke-Git -C $Clone reset --quiet --hard FETCH_HEAD
+        }
+    } catch {
+        # repo\ ist nur ein Zwischenspeicher: bei Problemen löschen und frisch holen
+        Write-Step "Zwischenspeicher wird neu angelegt ($_)"
+        if (Test-Path $Clone) { Remove-Item $Clone -Recurse -Force }
         Invoke-Git clone --quiet --depth 1 --branch videos --single-branch $Repo $Clone
-    } else {
-        Invoke-Git -C $Clone fetch --quiet --depth 1 origin videos
-        Invoke-Git -C $Clone reset --quiet --hard FETCH_HEAD
     }
 
     $seen = @()
@@ -226,8 +233,11 @@ try {
         if (($seen -contains $day.Name) -and -not (Test-Path (Join-Path $Target $day.Name))) { continue }
         $dest = Join-Path $Target $day.Name
         $before = @(Get-ChildItem $dest -Recurse -File -Filter *.mp4 -ErrorAction SilentlyContinue).Count
-        & robocopy $day.FullName $dest /E /NFL /NDL /NJH /NJS /NP | Out-Null
-        if ($LASTEXITCODE -ge 8) { throw "robocopy Fehler $LASTEXITCODE" }
+        & robocopy $day.FullName $dest /E /R:2 /W:5 /NFL /NDL /NJH /NJS /NP | Out-Null
+        if ($LASTEXITCODE -ge 8) {
+            Write-Step "Konnte $($day.Name) nicht ganz kopieren (robocopy $LASTEXITCODE, ist ein Video gerade offen?)"
+            continue
+        }
         $after = @(Get-ChildItem $dest -Recurse -File -Filter *.mp4).Count
         $new += [Math]::Max(0, $after - $before)
         if ($seen -notcontains $day.Name) { Add-Content -Path $SeenFile -Value $day.Name }
@@ -242,7 +252,7 @@ try {
         Write-Log 'Skript aktualisiert'
     }
 } catch {
-    Write-Log "Fehler: $_"
+    Write-Step "Fehler beim Clips holen: $_"
     $failed = $true
 }
 
@@ -253,7 +263,7 @@ try {
         Show-Toast "Material hochgeladen ($up neue oder geaenderte Dateien)"
     }
 } catch {
-    Write-Log "Material-Upload fehlgeschlagen: $_"
+    Write-Step "Material-Upload fehlgeschlagen: $_"
 }
 if ($Install) { Write-Host 'Fertig. Du kannst das Fenster schliessen.' }
 if ($failed) { exit 1 }
